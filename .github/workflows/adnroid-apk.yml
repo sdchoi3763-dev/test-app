@@ -1,0 +1,43 @@
+# GitHub에 올리면 Android 설치 파일(APK)을 자동으로 만듭니다.
+# Actions 탭 → "Android APK" → 실행 후, 결과 화면 아래 Artifacts에서 TARGETLAB-apk 를 내려받으세요.
+name: Android APK
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: 21 }
+      - run: npm install
+      - run: npx cap add android
+      - run: node scripts/native-setup.js android
+      - run: npx capacitor-assets generate --android
+      - run: npx cap sync android
+      - run: chmod +x android/gradlew && cd android && ./gradlew assembleDebug --no-daemon
+      - uses: actions/upload-artifact@v4
+        with:
+          name: TARGETLAB-apk
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+
+# iOS 시뮬레이터용 빌드 확인 (실기기 설치·App Store 배포는 Mac의 Xcode에서 서명 후 진행)
+name: iOS build check
+on: [ workflow_dispatch ]
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm install
+      - run: npx cap add ios
+      - run: node scripts/native-setup.js ios
+      - run: npx capacitor-assets generate --ios
+      - run: npx cap sync ios
+      - run: xcodebuild -project ios/App/App.xcodeproj -scheme App -configuration Debug -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' CODE_SIGNING_ALLOWED=NO build
