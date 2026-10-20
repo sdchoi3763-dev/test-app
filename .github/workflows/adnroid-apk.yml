@@ -25,16 +25,3 @@ jobs:
           name: TARGETLAB-apk
           path: android/app/build/outputs/apk/debug/app-debug.apk
 
-# iOS 시뮬레이터용 빌드 확인 (실기기 설치·App Store 배포는 Mac의 Xcode에서 서명 후 진행)
-  build:
-    runs-on: macos-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with: { node-version: 22 }
-      - run: npm install
-      - run: npx cap add ios
-      - run: node scripts/native-setup.js ios
-      - run: npx capacitor-assets generate --ios
-      - run: npx cap sync ios
-      - run: xcodebuild -project ios/App/App.xcodeproj -scheme App -configuration Debug -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' CODE_SIGNING_ALLOWED=NO build
