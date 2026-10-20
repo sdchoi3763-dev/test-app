@@ -37,7 +37,8 @@ button,input,select,textarea{font:inherit;color:inherit}
 .side{padding-block:28px;padding-left:max(22px,env(safe-area-inset-left,0px));padding-right:18px;border-right:2px solid var(--navy);background:var(--surface);position:sticky;top:0;height:100vh;overflow-y:auto}
 .brandlogo{margin:0 0 8px;padding:5px 8px;background:#fff;border-radius:6px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center}.brandlogo img{max-width:70%;max-height:24px;object-fit:contain;display:block}
 .brand{font-size:19px;font-weight:600;letter-spacing:.04em;margin:0 0 18px;display:flex;align-items:center;justify-content:space-between}
-.brand .bwrap{display:flex;align-items:center;gap:10px;min-width:0}.brand .bmark{width:38px;height:38px;flex:none;border-radius:9px;box-shadow:0 2px 6px rgba(18,53,83,.25)}
+.brand .bwrap{display:flex;align-items:center;gap:10px;min-width:0;cursor:pointer;border-radius:8px}.brand .bwrap:hover .bname{color:var(--navy)}
+a.brandlogo{display:flex;cursor:pointer;border-radius:6px;transition:opacity .15s}a.brandlogo:hover{opacity:.8}.brand .bmark{width:38px;height:38px;flex:none;border-radius:9px;box-shadow:0 2px 6px rgba(18,53,83,.25)}
 .brand .bname{display:block;font-size:19px;font-weight:800;letter-spacing:.05em;line-height:1.15}.brand .bname b{font-weight:300;color:var(--navy);margin-left:6px}
 .brand small{display:block;font-size:10.5px;white-space:nowrap;letter-spacing:-.2px;font-weight:400;letter-spacing:0;color:var(--muted)}
 .menu-toggle{display:none;border:1px solid var(--line);background:var(--surface);border-radius:var(--r);padding:4px 10px;cursor:pointer}
@@ -98,6 +99,10 @@ h3{font-size:14.5px;font-weight:600;margin:0}
 .navbar .ntrail{margin-left:8px;display:flex;flex-wrap:wrap;align-items:center;gap:4px;min-width:0}
 .navbar .ntrail i{font-style:normal;opacity:.6}
 .navbar .ntrail .cur{color:var(--ink);font-weight:600}
+.mttbl{table-layout:fixed;min-width:1040px;width:100%}.mttbl td{vertical-align:top;padding:8px 5px}.mttbl .inp.sm{min-width:0;width:100%;box-sizing:border-box}.mttbl .mtph{width:64px;height:52px}.mttbl .chip{white-space:normal;line-height:1.3}.mtph{display:grid;place-items:center;width:72px;height:56px;font-size:11.5px;color:var(--muted)}.mtph img{max-width:100%;max-height:100%;object-fit:contain}
+.needgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px}.needc{border:1px solid var(--line);border-radius:8px;padding:9px 11px;display:grid;gap:4px;background:var(--surface)}.needc.bad{border-color:#f0b4ad;background:var(--bad-soft)}.needc.warn{border-color:#f0c98a;background:var(--warn-soft)}.needc .btn{justify-self:start}
+.cscope{margin-top:12px;border:1px solid var(--line);border-radius:8px;overflow:hidden}.cscope-h{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;padding:8px 12px;background:var(--sunk)}.cpart{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:8px 12px;border-top:1px solid var(--line);color:var(--muted)}.cpart.on{color:var(--ink)}.cpart.tot{color:var(--ink);background:var(--sunk)}.cpart .cpn{min-width:64px;text-align:right}
+.qtlogo{display:grid;grid-template-columns:72px minmax(0,1fr) auto;gap:12px;align-items:center;margin-top:10px;padding:10px;border:1px solid var(--line);border-radius:8px}.qtlogo .ql{height:44px;border-radius:6px;background:#fff;border:1px solid var(--line);display:grid;place-items:center;overflow:hidden}.qtlogo .ql img{max-width:64px;max-height:38px;object-fit:contain}.qtlogo .ql span{font-size:11px;color:var(--muted)}.qtlogo>div:nth-child(2){display:grid;gap:2px}
 .m2box{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:10px}.m2box>div{background:var(--sunk);border-radius:8px;padding:9px 11px;display:grid;gap:2px}.m2box span{font-size:11.5px;color:var(--muted)}.m2box b{font-size:18px;font-weight:700}.m2box small{font-size:11px;color:var(--muted);margin-left:3px;font-weight:500}
 .m2cmp{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 10px;margin-top:10px;padding:9px 11px;border:1px dashed var(--line);border-radius:8px;font-size:13px}.m2cmp b{font-size:16px}.m2cmp .up{color:var(--warn);font-size:12px}.m2cmp .down{color:var(--ok);font-size:12px}
 .d2{display:grid;gap:18px}
@@ -715,6 +720,7 @@ const NAV_IC = {
   perf: '<path d="M3.5 15a8.5 8.5 0 1 1 17 0"/><path d="M12 15l4-5"/><circle cx="12" cy="15" r="1.3"/><path d="M6 15h1.5M16.5 15H18M12 8V9.5M7.7 10.7l1 1"/><path d="M3.5 19.5h17"/>',
   report: '<path d="M14 2.5H6.5A2 2 0 0 0 4.5 4.5v15a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V8z"/><path d="M14 2.5V8h5.5"/><path d="M8.5 17v-3M12 17v-5M15.5 17v-2"/>',
   cost: '<rect x="4.5" y="2.5" width="15" height="19" rx="2"/><rect x="7.5" y="5.5" width="9" height="4" rx=".8"/><path d="M8 13.2h.01M12 13.2h.01M16 13.2h.01M8 17h.01M12 17h.01M16 17h.01"/>',
+  meter: '<rect x="6" y="2.5" width="12" height="19" rx="2.5"/><rect x="8.5" y="5" width="7" height="4.5" rx=".8"/><circle cx="12" cy="14.5" r="2.6"/><path d="M12 14.5l1.4-1.4M9 19h.01M15 19h.01"/>',
   contract: '<path d="M13.5 2.5h-7a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h5"/><path d="M13.5 2.5V7h4.5"/><path d="M18 7v3"/><path d="M8 11h6M8 14.5h3"/><path d="M19.4 13.6a1.6 1.6 0 0 1 2.3 2.3l-5.2 5.2-3 .7.7-3z"/>',
 };
 const navIc = k => NAV_IC[k] ? `<svg class="nic" viewBox="0 0 24 24" aria-hidden="true">${NAV_IC[k]}</svg>` : '';
@@ -729,6 +735,7 @@ const NAV = [
   ]},
   { k:'maint', t:'유지보수·관리', ic:'maint' }, { k:'perf', t:'성능점검', ic:'perf' }, { k:'report-maint', t:'결과보고서', ic:'report', sub:[{ k:'report-maint', t:'유지보수·관리 보고서' }, { k:'report-perf', t:'성능점검 보고서' }] }, { k:'cost', t:'대가산정', ic:'cost' },
   { t:'계약서', ic:'contract', k:'contract-base', children:[{ k:'contract-base', t:'기본계약서' }, { k:'contract-list', t:'계약 관리' }] },
+  { k:'meter', t:'계측기 현황', ic:'meter' },
 ];
 function activeTop(){ const p = UI.page; if (p === 'insp'){ const i = S.inspections[UI.id]; return i ? i.type : 'maint'; } if (p === 'report'){ const i = S.inspections[UI.reportId]; return 'report-' + (i ? i.type : 'perf'); } return p; }
 function renderSide(){
@@ -736,7 +743,7 @@ function renderSide(){
   const link = (k, t, cls) => `<a data-go="${k}" class="${a === k ? 'on' : ''}">${esc(t)}</a>`;
   const bv = vendors().find(v => /미래\s*BM/i.test(v.name || '')) || vendors().find(v => getPhoto(`logo__vendors__${v.id}`));
   const blogo = bv ? getPhoto(`logo__vendors__${bv.id}`) : null;
-  let h = `${blogo ? `<div class="brandlogo"><img src="${blogo}" alt="${esc(bv.name)} 로고"></div>` : ''}<div class="brand"><div class="bwrap"><svg class="bmark" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="tlg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1f4e79"/><stop offset="1" stop-color="#123553"/></linearGradient></defs><rect width="64" height="64" rx="15" fill="url(#tlg)"/><g fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round"><path d="M50.58,35.95 A19,19 0 0 1 35.95,50.58"/><path d="M28.05,50.58 A19,19 0 0 1 13.42,35.95"/><path d="M13.42,28.05 A19,19 0 0 1 28.05,13.42"/><path d="M35.95,13.42 A19,19 0 0 1 50.58,28.05"/><path d="M32 7v8M32 49v8M7 32h8M49 32h8"/></g><path d="M32 32 L32.00,18.00 A14,14 0 0 1 45.16,27.21 Z" fill="#3fb6e8" opacity=".28" stroke="none"/><g fill="none" stroke-width="3" stroke-linecap="round"><path d="M32.00,22.00 A10,10 0 0 1 41.40,28.58" stroke="#3fb6e8"/><path d="M40.66,37.00 A10,10 0 0 1 22.15,33.74" stroke="#3fb6e8" opacity=".55"/></g><circle cx="32" cy="32" r="3.6" fill="#fff"/><circle cx="41.40" cy="28.58" r="2.6" fill="#3fb6e8"/></svg><div><span class="bname">TARGET<b>LAB</b></span><small>정보통신설비 유지보수·성능점검</small></div></div><button class="menu-toggle" data-act="menu" aria-label="메뉴 열기">메뉴</button></div><ul class="nav">`;
+  let h = `${blogo ? `<a class="brandlogo" data-go="dashboard" role="link" tabindex="0" title="대시보드로 이동" aria-label="${esc(bv.name)} 로고 — 대시보드로 이동"><img src="${blogo}" alt="${esc(bv.name)} 로고"></a>` : ''}<div class="brand"><div class="bwrap" data-go="dashboard" role="link" tabindex="0" title="대시보드로 이동"><svg class="bmark" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="tlg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1f4e79"/><stop offset="1" stop-color="#123553"/></linearGradient></defs><rect width="64" height="64" rx="15" fill="url(#tlg)"/><g fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round"><path d="M50.58,35.95 A19,19 0 0 1 35.95,50.58"/><path d="M28.05,50.58 A19,19 0 0 1 13.42,35.95"/><path d="M13.42,28.05 A19,19 0 0 1 28.05,13.42"/><path d="M35.95,13.42 A19,19 0 0 1 50.58,28.05"/><path d="M32 7v8M32 49v8M7 32h8M49 32h8"/></g><path d="M32 32 L32.00,18.00 A14,14 0 0 1 45.16,27.21 Z" fill="#3fb6e8" opacity=".28" stroke="none"/><g fill="none" stroke-width="3" stroke-linecap="round"><path d="M32.00,22.00 A10,10 0 0 1 41.40,28.58" stroke="#3fb6e8"/><path d="M40.66,37.00 A10,10 0 0 1 22.15,33.74" stroke="#3fb6e8" opacity=".55"/></g><circle cx="32" cy="32" r="3.6" fill="#fff"/><circle cx="41.40" cy="28.58" r="2.6" fill="#3fb6e8"/></svg><div><span class="bname">TARGET<b>LAB</b></span><small>정보통신설비 유지보수·성능점검</small></div></div><button class="menu-toggle" data-act="menu" aria-label="메뉴 열기">메뉴</button></div><ul class="nav">`;
   UI.navOpen = UI.navOpen || {};
   const kidsOf = n => n.sub ? n.sub : n.children ? n.children : null;
   const has = (n, k) => n.k === k && !kidsOf(n) || (kidsOf(n) || []).some(c => has(c, k));
@@ -828,9 +835,10 @@ PAGES.dashboard = () => {
   xOpen.forEach(i => { const o = S.owners[i.ownerId] || {}; T.push({ n: -1, tone: 'bad', ic: 'alert', t: `${o.name || '-'} 부적합 ${stat.get(i.id).x}건 조치 미기재`, s: `${i.type === 'perf' ? '성능점검' : '유지보수·관리'} · ${fmtDate(i.date)}`, d: '조치', btn: `<button class="btn sm" data-open="${i.id}">조치 입력</button>` }); });
   open.filter(i => !xOpen.includes(i)).forEach(i => { const o = S.owners[i.ownerId] || {}, s = stat.get(i.id); T.push({ n: 0, tone: '', ic: i.type, t: `${o.name || '-'} ${i.type === 'perf' ? '성능점검' : '유지보수·관리'} 진행 중`, s: `${i.term || ''} · 점검표 ${s.pct}% 작성`, pct: s.pct, d: `${s.pct}%`, btn: `<button class="btn sm" data-open="${i.id}">이어서 작성</button>` }); });
   evList().filter(e => e.date >= td && daysTo(e.date) <= 14).forEach(e => { const o = S.owners[e.ownerId] || {}, n = daysTo(e.date); T.push({ n, tone: '', ic: 'cal', t: e.kind === 'maint' || e.kind === 'perf' ? `${o.name || ''} ${e.kind === 'perf' ? '성능점검' : '유지보수·관리'} 예정` : e.title, s: `${fmtDate(e.date)}${e.time ? ' ' + e.time : ''} · 등록 일정`, d: n ? `D-${n}` : '오늘', btn: `<button class="btn sm ghost" data-act="schev" data-id="${e.id}" data-go2="schedule">보기</button>` }); });
+  vs.forEach(v => (v.tools || []).forEach(t => { if (t.status === 'out' || t.status === 'repair') return; const due = toolDue(t); if (!due) return; const n = daysTo(due); if (n > 30) return; T.push({ n, tone: n < 0 ? 'bad' : 'warn', ic: 'meter', t: `${t.name || '계측기'} 교정 ${n < 0 ? '만료' : '예정'}`, s: `${v.name} · 다음 교정일 ${fmtDate(due)}`, d: n < 0 ? `${-n}일 지남` : `D-${n}`, btn: `<button class="btn sm ghost" data-go="meter">계측기 현황</button>` }); }));
   ctrList().filter(c => c.end >= td && daysTo(c.end) <= 60).forEach(c => { const o = S.owners[c.ownerId] || {}, n = daysTo(c.end); T.push({ n, tone: n <= 14 ? 'warn' : '', ic: 'doc', t: `${o.name || ''} 계약 만료`, s: `${fmtDate(c.end)} · ${ctrScopeName(c.scope || {})}`, d: `D-${n}`, btn: `<button class="btn sm ghost" data-act="ctrrenew" data-id="${c.id}">재계약</button>` }); });
   T.sort((a, b) => a.n - b.n);
-  const IC = { maint: NAV_IC.maint, perf: NAV_IC.perf, alert: '<path d="M12 3.5 2.8 19.5h18.4z"/><path d="M12 10v4M12 17h.01"/>', cal: NAV_IC.schedule, doc: NAV_IC.contract };
+  const IC = { meter: NAV_IC.meter, maint: NAV_IC.maint, perf: NAV_IC.perf, alert: '<path d="M12 3.5 2.8 19.5h18.4z"/><path d="M12 10v4M12 17h.01"/>', cal: NAV_IC.schedule, doc: NAV_IC.contract };
   const ico = k => `<svg viewBox="0 0 24 24" aria-hidden="true">${IC[k] || ''}</svg>`;
   const ring = (a, b, cls) => { const r = 26, c = 2 * Math.PI * r, f = b ? a / b : 0; return `<svg class="ring ${cls}" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="${r}" class="bg"/>${f > 0 ? `<circle cx="32" cy="32" r="${r}" class="fg" stroke-dasharray="${(c * f).toFixed(1)} ${c.toFixed(1)}" transform="rotate(-90 32 32)"/>` : ''}<text x="32" y="37" text-anchor="middle">${b ? Math.round(f * 100) : 0}%</text></svg>`; };
   const chip = x => x ? `<span class="dd ${x.n <= 7 ? 'bad' : x.n <= 30 ? 'warn' : ''}">D-${x.n}</span>` : '<span class="muted small">완공일 미등록</span>';
@@ -2735,8 +2743,8 @@ function buildReport(i, id, edit = false){
   page(`<h2>2.1 인력 투입 계획</h2><h4>2.1.1 인력 투입 계획</h4><ul class="b" style="list-style:'○ '"><li>본 건축물의 정보통신설비 ${isP ? '성능점검' : '유지보수·관리 점검'}을 위한 투입 인력은 관련 법령을 참고하여 산출하였음<br>- 「정보통신공사업법 시행규칙」[별표 1]의 기준을 반영하여 유지보수·관리자를 선임<br>※ 관리주체의 요청 및 상황에 따라 투입 인력 변동이 발생할 수 있음</li><li>${i.eqIds.length}개 정보통신설비가 설치된 연면적 ${o.area ? (+o.area).toLocaleString('ko-KR') : '-'}㎡ 건축물의 투입인력 산출식 : ${base.toFixed(2)}(투입인원 산정기준) × ${coef.toFixed(2)}(조정계수) = ${(base * coef).toFixed(2)}</li></ul><p style="text-align:center;margin:6px 0">&lt; 「정보통신설비 유지보수·관리기준」 [별표 3] 표 1 투입인원 산정기준 &gt;</p>` + T(['순번', '유지보수·관리 및 성능점검 대상 정보통신설비', '단위', '수량', '기준인원(인)', '합계'], [...hr, `<tr><th colspan="5">합계</th><th>${base.toFixed(2)}</th></tr>`]));
   page(`<p style="text-align:center;margin:6px 0">&lt; 「정보통신설비 유지보수·관리기준」 [별표 3] 표 2 연면적에 따른 조정계수 &gt;</p>` + T(['연면적 기준', '조정계수'], [...COEF].reverse().map(([m, c], n, a) => `<tr><td>${m.toLocaleString('ko-KR')}㎡ 이상${a[n + 1] ? ` ~ ${a[n + 1][0].toLocaleString('ko-KR')}㎡ 미만` : ''}</td><td>${c.toFixed(2)}${c === coef ? ' ◀' : ''}</td></tr>`)) +
     `<h4>2.1.2 유지보수·관리자의 선임기준</h4><p style="text-align:center;margin:6px 0">&lt; 정보통신설비 유지보수·관리자의 선임기준(제8조의2제1항 관련) &gt;</p>` + T(['구분', '선임대상', '선임자격', '선임인원'], [['특급', '가. 연면적 6만제곱미터 이상'], ['고급', '나. 연면적 3만제곱미터 이상 6만제곱미터 미만'], ['중급', '다. 연면적 1만5천제곱미터 이상 3만제곱미터 미만'], ['초급', '라. 연면적 5천제곱미터 이상 1만5천제곱미터 미만']].map(([g, t], n) => `<tr>${n === 0 ? '<td rowspan="4">영 제37조의2제1항제1호에 해당하는 용도별 건축물</td>' : ''}<td class="l">${t}</td><td class="l">정보통신공사업법 시행령 별표6에 따른 ${g}기술자${g === '특급' ? '인 자' : ' 이상인 자'}</td><td>${g === grade ? 1 : '-'}</td></tr>`)));
-  const tools = (v && v.tools && v.tools.length) ? v.tools : DEF_TOOLS.map(n => ({ name: n, model: '', items: '' }));
-  const tcard = t => { const s = v && t.id ? getPhoto(`tool__vendors__${i.vendorId}__${t.id}`) : null; return T(null, [`<tr><td rowspan="3" style="width:180px;height:126px;padding:4px;background:#fafafa">${s ? `<img src="${s}" alt="" style="max-width:100%;max-height:118px">` : '<span style="color:#999">측정장비 외관</span>'}</td><th style="width:104px">장비명</th><td class="l">${esc(t.name)}</td></tr>`, `<tr><th>제조사/모델번호</th><td class="l">${esc(t.model || '-')}</td></tr>`, `<tr><th>측정 항목</th><td class="l">${esc(t.items || '')}</td></tr>`]); };
+  const tools = (v && v.tools && v.tools.filter(t => t.status !== 'out').length) ? v.tools.filter(t => t.status !== 'out') : DEF_TOOLS.map(n => ({ name: n, model: '', items: TOOL_ITEMS[n] || '' }));
+  const tcard = t => { const s = v && t.id ? getPhoto(`tool__vendors__${i.vendorId}__${t.id}`) : null; return T(null, [`<tr><td rowspan="3" style="width:180px;height:126px;padding:4px;background:#fafafa">${s ? `<img src="${s}" alt="" style="max-width:100%;max-height:118px">` : '<span style="color:#999">측정장비 외관</span>'}</td><th style="width:104px">장비명</th><td class="l">${esc(t.name)}</td></tr>`, `<tr><th>제조사/모델번호</th><td class="l">${esc(t.model || '-')}${t.serial ? ` <span style="color:#555">(S/N ${esc(t.serial)})</span>` : ''}${toolDue(t) ? `<div style="font-size:10px;color:#444;margin-top:2px">교정일 ${fmtDate(t.calDate)} · 유효기간 ~${fmtDate(toolDue(t))}${t.calOrg ? ' · ' + esc(t.calOrg) : ''}</div>` : ''}</td></tr>`, `<tr><th>측정 항목</th><td class="l">${esc(t.items || TOOL_ITEMS[t.name] || '')}</td></tr>`]); };
   for (let n = 0; n < tools.length; n += 6) page((n === 0 ? `<h2>2.2 장비현황</h2><h4>2.2.1 보유 장비 현황</h4>` : '') + tools.slice(n, n + 6).map(tcard).join(''));
   const tr = EQ.map(e => `<tr><td>${e.group}설비</td><td>${esc(e.name)}</td><td class="l">${esc(e.kinds)}, 그 외의 관련된 설비</td><td class="l">${esc(REP.tools[e.id] || '')}</td></tr>`);
   page(`<h4>2.2.2 설비별 점검 및 계측 장비 현황</h4>` + T(['구분', '설비의 구분', '설비의 종류', '점검장비'], tr.slice(0, 17)));
@@ -3090,12 +3098,22 @@ const DEF_PRICE = { '특급':412000, '고급':318000, '중급':266000, '초급':
 function costInit(o, oid){
   const area = +o.area || 0, tg = ownerTargets(o);
   const qty = {}; EQ.forEach(e => { const q = (o.equip || {})[e.id]; qty[e.id] = { on: tg.length ? tg.includes(e.id) : false, q: q && q.qty !== '' && q.qty != null ? +q.qty : (e.unit === '세대' ? +o.households || 0 : 1) }; });
-  return { oid, area, qty, times:1, price:{ ...DEF_PRICE }, split:null, travel:0, car:0, site:0, ovh:110, fee:20, rate:100, unit:'', unitVat:'포함' };
+  return { oid, area, qty, scope:{ maint:true, perf:true }, mt:2, pt:1, times:3, price:{ ...DEF_PRICE }, split:null, travel:0, car:0, site:0, ovh:110, fee:20, rate:100, unit:'', unitVat:'포함' };
 }
+const COST_PARTS = [['maint', '유지보수·관리', 'mt', 2, '반기 1회'], ['perf', '성능점검', 'pt', 1, '연 1회']];
+const cnt = v => Math.max(0, Math.round(v === '' || v == null ? 0 : +v || 0));
+/* 업무 구분(유지보수·관리 / 성능점검)별 연간 횟수 — 예전 저장값(times만 있는 경우)도 처리 */
+function costScope(C){
+  if (!C.scope){ const t = +C.times || 1; C.scope = { maint: t >= 2, perf: t !== 2 }; C.mt = t >= 2 ? 2 : 0; C.pt = 1; }
+  if (C.mt == null) C.mt = 2; if (C.pt == null) C.pt = 1;
+  return COST_PARTS.filter(([k]) => C.scope[k]).map(([k, t, f, d, cyc]) => ({ k, t, n: cnt(C[f]), cyc }));
+}
+const costWork = C => { const sc = C.scope || {}; return sc.maint && sc.perf ? '유지보수·관리 및 성능점검' : sc.perf ? '성능점검' : sc.maint ? '유지보수·관리' : '유지보수·관리 및 성능점검'; };
 function costCompute(C){
+  const parts0 = costScope(C); C.times = parts0.reduce((a, x) => a + x.n, 0);
   const coef = coefOf(C.area); let tot = 0;
   const rows = EQ.map(e => { const r = C.qty[e.id]; const n = r.on ? (+r.q || 0) * e.base * (e.adj ? coef : 1) : 0; tot += n; return { e, r, n }; });
-  const people = tot * (+C.times || 1);
+  const people = tot * C.times;
   const g = gradeByArea(C.area);
   const split = C.split || Object.fromEntries(GRADES.map(x => [x, x === g ? +people.toFixed(2) : 0]));
   const labor = GRADES.reduce((s, x) => s + (+split[x] || 0) * (+C.price[x] || 0), 0);
@@ -3105,25 +3123,30 @@ function costCompute(C){
   const rate = Math.max(0, Math.min(200, C.rate === '' || C.rate == null ? 100 : +C.rate || 0)), applied = Math.floor(total * rate / 100 / 1000) * 1000, area = +C.area || 0;
   const appliedEx = Math.round(applied / 1.1), perM2 = area ? applied / area : 0, perM2Ex = area ? appliedEx / area : 0, perM2Raw = area ? total / area : 0;
   const unit = +C.unit || 0, unitAmt = unit && area ? Math.floor(area * unit * (C.unitVat === '별도' ? 1.1 : 1) / 1000) * 1000 : 0;
-  return { tot, rows, people, g, split, labor, direct, ovhR, feeR, ovh, fee, sub, vat, total, rate, applied, appliedEx, perM2, perM2Ex, perM2Raw, unit, unitAmt };
+  /* 구분별 배분: 횟수 비율로 나누고, 원 단위 끝수·천원 단위 끝수는 마지막 구분에 합산 */
+  const T = C.times || 1, parts = parts0.map(x => ({ ...x, r: x.n / T }));
+  const share = (v, step = 1) => { let used = 0; return parts.map((x, k) => { const a = k === parts.length - 1 ? Math.round(v) - used : Math.floor(v * x.r / step) * step; used += a; return a; }); };
+  const L = share(labor), Dd = share(direct), O = share(ovh), F = share(fee), A = share(applied, 1000), AE = share(appliedEx);
+  parts.forEach((x, k) => Object.assign(x, { people: tot * x.n, labor: L[k], direct: Dd[k], ovh: O[k], fee: F[k], sub: L[k] + Dd[k] + O[k] + F[k], applied: A[k], appliedEx: AE[k], vat: A[k] - AE[k] }));
+  return { tot, rows, people, g, split, labor, direct, ovhR, feeR, ovh, fee, sub, vat, total, rate, applied, appliedEx, perM2, perM2Ex, perM2Raw, unit, unitAmt, times: C.times, parts };
 }
 
 /* ===== 계약서 — 「정보통신설비 유지보수·관리 및 성능점검 업무해설서」 부록1 계약서(양식) 기준 ===== */
 const CTR_ARTS = [
-  ['제1조 (총칙)', '이 계약은 「정보통신공사업법」 제37조의2부터 제37조의4까지의 정보통신설비 유지보수·관리 및 성능점검 업무에 대하여 발주자("발주자")와 계약 대상 건축물의 유지보수·관리자 및 성능점검자("수급인") 간 정보통신설비 유지보수·관리 등의 업무 수행에 필요한 상호 권리와 의무 등을 정한다.'],
-  ['제2조 (대상 정보통신설비)', '계약 건축물에 설치된 정보통신설비 중 「정보통신설비 유지보수·관리기준」에 따라 유지보수·관리 및 성능점검을 실시하여야 하는 모든 설비를 대상으로 한다.'],
+  ['제1조 (총칙)', '이 계약은 「정보통신공사업법」 제37조의2부터 제37조의4까지의 정보통신설비 {{업무명}} 업무에 대하여 발주자("발주자")와 계약 대상 건축물의 {{수급인역할}}("수급인") 간 정보통신설비 {{업무명}} 등의 업무 수행에 필요한 상호 권리와 의무 등을 정한다.'],
+  ['제2조 (대상 정보통신설비)', '계약 건축물에 설치된 정보통신설비 중 「정보통신설비 유지보수·관리기준」에 따라 {{업무명}}{{을/를}} 실시하여야 하는 모든 설비를 대상으로 한다.'],
   ['제3조 (업무의 범위 등)', '① "수급인"은 「정보통신공사업법」 제37조의2부터 제37조의4까지의 규정에 따라 계약 건축물의 {{업무명}}에 필요한 업무를 수행한다.\n② 정보통신설비의 고장으로 인한 교체 및 수리 등은 {{업무명}} 업무에 포함되지 않으며, "발주자"가 별도 비용을 계상하여 "수급인"에게 교체 및 수리 등의 업무를 요청하는 경우 "수급인"은 해당 업무를 수행할 수 있다.'],
   ['제4조 (책임의 한계)', '① "발주자"는 점검의 위탁·대행 기간 중 계약상대자 "수급인"이 정보통신설비 {{업무명}} 등의 업무를 충실히 수행하였음에도 불구하고, 점검일 이후 "발주자"의 관리 소홀 및 부주의, 천재지변, 화재, 전쟁, 내란, 폭동, 건축물의 노후 등 불가항력적인 원인으로 인하여 발생한 파손 및 그로 인한 인적, 물적 피해에 대하여 "수급인"에 대한 민사 및 형사상의 책임(손해배상)을 지게 할 수 없다.\n② "수급인"이 점검을 실시함에 있어 규정에 의한 점검을 성실히 시행하지 아니하고 허위로 점검부를 작성하여 보고하거나 관계기관에 제출하였을 경우에는 이에 대한 책임은 "수급인"에게 있다.\n③ "수급인"은 본 계약에 의해 발생되는 권리와 의무를 "발주자"의 승낙 없이 제3자에게 승계할 수 없다.\n④ "발주자"는 정보통신설비가 정상적인 기능 및 작동 상태가 유지될 수 있도록 책임을 진다.\n⑤ "발주자"는 관할 시·군·구청에서 발부한 행정명령 사항에 대하여 명령 기간 내에 이를 조치하여야 한다.'],
-  ['제5조 (자료의 제공 및 성실 의무)', '① "발주자"는 본 위탁 및 대행업무를 수행하는데 필요한 다음 각 호의 자료를 "수급인"이 요구할 때에는 즉시 제공하여야 한다.\n가. 위탁 및 대행에 필요한 건축물의 설비 도면 일체\n나. 기타 위탁 및 대행 업무수행에 필요한 자료\n② 본 위탁 및 대행업무 수행에 있어 "발주자"와 "수급인"은 신의와 성실의 관계를 유지하고 관계 법령을 준수하며, "수급인"은 품질 향상을 위하여 노력한다.'],
+  ['제5조 (자료의 제공 및 성실 의무)', '① "발주자"는 본 위탁 및 대행업무를 수행하는 데 필요한 다음 각 호의 자료를 "수급인"이 요구할 때에는 즉시 제공하여야 한다.\n가. 위탁 및 대행에 필요한 건축물의 설비 도면 일체\n나. 기타 위탁 및 대행 업무수행에 필요한 자료\n② 본 위탁 및 대행업무 수행에 있어 "발주자"와 "수급인"은 신의와 성실의 관계를 유지하고 관계 법령을 준수하며, "수급인"은 품질 향상을 위하여 노력한다.'],
   ['제6조 (계약보증금)', '{{계약보증}}'],
   ['제7조 (대가의 지급)', '① 정보통신설비 {{업무명}}의 대가는 계약서에 의한 금액으로 한다.\n② 계약금 : {{계약금}}\n③ 잔 금 : {{잔금}}\n[{{계약금액}}]'],
   ['제8조 (계약의 변경)', '① 합리적이고 객관적인 사유가 발생하여 부득이하게 계약 내용을 변경할 필요가 있는 경우에는 "발주자"와 "수급인"이 상호 합의하여 별도의 서면에 의하여 계약의 내용을 변경할 수 있다.\n② "발주자"의 요구로 위탁 및 대행 계약내용의 변경이 발생하여 대금의 조정이 필요한 경우, "발주자"와 "수급인"은 협의하여 계약내용의 변경에 따른 대금을 합리적으로 조정하여야 한다.\n③ "발주자"가 산출하여 제공한 정보통신설비의 수량에 오류가 있어 대상 수량의 조정이 필요한 경우에도 제2항과 같다.'],
-  ['제9조 (계약의 해제·해지)', '① 계약기간 중 "수급인"에게 다음 각 호에 해당하는 사유가 발생한 경우, "발주자"는 본 계약 또는 개별 계약에 대하여 그 전부 또는 일부를 해제·해지할 수 있다.\n1. 금융기관으로부터 거래정지 처분을 받은 경우\n2. 감독관청으로부터 영업 취소, 정지 등의 처분을 받았을 때\n3. 어음·수표의 부도, 제3자에 의한 강제집행(가압류 및 가처분 포함), 파산·화의개시 및 회사정리절차의 신청 등 영업상의 중대한 사유가 발생하여 계약 내용을 이행할 수 없다고 인정될 경우\n② "발주자" 또는 "수급인"은 계약기간 중 다음 각 호에 해당하는 사유가 발생한 경우, 상대방에게 14일 이상의 기간을 정하여 그 이행을 최고하고, 그 기간 내에 이를 이행하지 아니한 때에는 본 계약 또는 개별 계약의 전부 또는 일부를 해제·해지할 수 있다.\n1. "발주자" 또는 "수급인"이 본 계약 또는 개별 계약의 중요한 내용을 위반한 경우\n2. "수급인"이 정당한 사유 없이 위탁·대행업무의 수행을 거부하거나 지연하는 경우\n3. "발주자" 또는 "수급인"이 계약 내용을 원만히 이행할 수 없다고 인정되는 상당한 이유가 있는 경우\n③ "발주자" 또는 "수급인"은 제1항 또는 제2항의 규정에 의하여 계약을 해제·해지하고자 하는 경우에는 상대방에게 이를 서면으로 통지하여야 한다.\n④ "발주자" 또는 "수급인"은 자신의 귀책 사유로 인하여 본 계약 또는 개별 계약의 전부 또는 일부가 해제·해지됨으로써 발생한 상대방의 손해를 배상할 책임이 있다.'],
+  ['제9조 (계약의 해제·해지)', '① 계약기간 중 "수급인"에게 다음 각 호에 해당하는 사유가 발생한 경우, "발주자"는 본 계약 또는 개별 계약에 대하여 그 전부 또는 일부를 해제·해지할 수 있다.\n1. 금융기관으로부터 거래정지 처분을 받은 경우\n2. 감독관청으로부터 영업 취소, 정지 등의 처분을 받은 경우\n3. 어음·수표의 부도, 제3자에 의한 강제집행(가압류 및 가처분 포함), 파산·화의개시 및 회사정리절차의 신청 등 영업상의 중대한 사유가 발생하여 계약 내용을 이행할 수 없다고 인정될 경우\n② "발주자" 또는 "수급인"은 계약기간 중 다음 각 호에 해당하는 사유가 발생한 경우, 상대방에게 14일 이상의 기간을 정하여 그 이행을 최고하고, 그 기간 내에 이를 이행하지 아니한 때에는 본 계약 또는 개별 계약의 전부 또는 일부를 해제·해지할 수 있다.\n1. "발주자" 또는 "수급인"이 본 계약 또는 개별 계약의 중요한 내용을 위반한 경우\n2. "수급인"이 정당한 사유 없이 위탁·대행업무의 수행을 거부하거나 지연하는 경우\n3. "발주자" 또는 "수급인"이 계약 내용을 원만히 이행할 수 없다고 인정되는 상당한 이유가 있는 경우\n③ "발주자" 또는 "수급인"은 제1항 또는 제2항의 규정에 의하여 계약을 해제·해지하고자 하는 경우에는 상대방에게 이를 서면으로 통지하여야 한다.\n④ "발주자" 또는 "수급인"은 자신의 귀책 사유로 인하여 본 계약 또는 개별 계약의 전부 또는 일부가 해제·해지됨으로써 발생한 상대방의 손해를 배상할 책임이 있다.'],
   ['제10조 (안전관리 및 재해보상)', '"수급인"은 고의 또는 부주의로 인하여 발생하는 제반사고 및 인명피해에 대하여는 전적으로 민·형사상의 책임을 부담하여야 하며, 이에 따른 손해 또는 피해를 보상하여야 한다.'],
   ['제11조 (기밀의 보장)', '"발주자" 또는 "수급인"은 업무상 알게 된 상호간의 업무기밀을 요하는 사항에 대해서는 제3자에게 누설하여서는 아니 된다.'],
-  ['제12조 (점검원의 출입)', '"수급인"의 점검자는 발주처의 모든 규정·규칙을 준수하여 불미스러운 일이 발생되지 않도록 하고, 위반 시에는 출문조치하고 발주처에 출입을 금한다.'],
-  ['제13조 (유지보수·관리 및 성능점검 제출서류)', '① "수급인"은 {{업무명}}이 완료된 때에는 "발주자"와 사전협의 후 「정보통신설비 유지보수·관리기준」에 따른 결과를 기록·작성하여 다음 각 호의 결과물을 "발주자"에게 제출하여야 한다.\n{{제출서류}}'],
-  ['제14조 (계약의 효력)', '본 계약서는 2통을 작성하여 "발주자"와 "수급인"이 각각 1통씩 보관하며, 계약서의 계약기간으로부터 효력이 발생한다.'],
+  ['제12조 (점검원의 출입)', '"수급인"의 점검자는 "발주자"의 모든 규정·규칙을 준수하여 불미스러운 일이 발생하지 않도록 하고, 위반 시 "발주자"는 해당 점검자를 퇴거 조치하고 출입을 금지할 수 있다.'],
+  ['제13조 ({{업무명}} 제출서류)', '① "수급인"은 {{업무명}}{{이/가}} 완료된 때에는 "발주자"와 사전협의 후 「정보통신설비 유지보수·관리기준」에 따른 결과를 기록·작성하여 다음 각 호의 결과물을 "발주자"에게 제출하여야 한다.\n{{제출서류}}'],
+  ['제14조 (계약의 효력)', '본 계약서는 2통을 작성하여 "발주자"와 "수급인"이 각각 1통씩 보관하며, 계약서에 정한 계약기간의 시작일부터 효력이 발생한다.'],
 ];
 const CTR_PAYC = [['final', '결과물 제출 후 일괄 지급'], ['each', '매 점검 완료·결과물 제출 시 점검분 지급'], ['half', '반기별 균등 분할 지급'], ['quarter', '분기별 균등 분할 지급'], ['month', '월별 균등 분할 지급']];
 const CTR_PAYP = { final: '제13조에 따른 결과물을 제출 후', each: '매 점검 완료 후 제13조에 따른 결과물을 제출할 때마다 해당 점검분으로 나누어', half: '반기별로 균등 분할하여 매 반기 점검 결과물 제출 후', quarter: '분기별로 균등 분할하여 매 분기 말에', month: '월별로 균등 분할하여 매월 말일에' };
@@ -3146,7 +3169,7 @@ const addYears = (s, n) => { const d = new Date(s); d.setFullYear(d.getFullYear(
 function ctrAmount(oid, sc){
   const o = S.owners[oid]; if (!o) return 0;
   const C = UI.cost && UI.cost.oid === oid ? { ...UI.cost } : costInit(o, oid);
-  C.times = (sc.maint ? 2 : 0) + (sc.perf ? 1 : 0) || 1; C.split = null;
+  costScope(C); C.scope = { maint: !!sc.maint, perf: !!sc.perf }; if (sc.maint && !cnt(C.mt)) C.mt = 2; if (sc.perf && !cnt(C.pt)) C.pt = 1; C.split = null;
   return costCompute(C).applied;
 }
 function ctrScale(o){ const f = [o.floorsUp ? `지상 ${o.floorsUp}층` : '', o.floorsDown && +o.floorsDown ? `지하 ${o.floorsDown}층` : ''].filter(Boolean).join(', '); return `${o.use ? o.use + ' ' : ''}건축물 1개동${f ? `(${f})` : ''}${o.area ? `, 연면적 ${(+o.area).toLocaleString('ko-KR')}㎡` : ''}`; }
@@ -3173,19 +3196,25 @@ function ctrVals(C){
   docs.push(`기타 점검 중 발생된 ${ctrWork(sc)} 관련 자료, 서류 등`);
   const dep = Math.max(0, Math.min(100, +C.deposit || 0)), amt = +C.amount || 0, depAmt = Math.floor(amt * dep / 100 / 10) * 10;
   return {
-    '계약명': ctrScopeName(sc), '업무명': ctrWork(sc), '발주자': o.name || '', '수급인': v.name || '', '주소': o.addr || '',
+    '계약명': ctrScopeName(sc), '업무명': ctrWork(sc), '수급인역할': sc.maint && sc.perf ? '유지보수·관리자 및 성능점검자' : sc.perf ? '성능점검자' : '유지보수·관리자', '발주자': o.name || '', '수급인': v.name || '', '주소': o.addr || '',
     '계약기간': C.start && C.end ? `${dKo(C.start)} ~ ${dKo(C.end)}` : '', '계약금액': amtTxt(amt, C.vat),
     '계약건축물': o.name || '', '건축물규모': C.scale || ctrScale(o),
-    '대상설비': tg.length ? `${tg.slice(0, 3).join(', ')}${tg.length > 3 ? ' 등' : ''} ${tg.length}개 설비` : '「정보통신설비 유지보수·관리기준」 별표 1에 따른 점검대상 설비',
+    '대상설비': tg.length ? (tg.length > 3 ? `${tg.slice(0, 3).join(', ')} 등 ${tg.length}개 설비` : `${tg.join(', ')}(${tg.length}개 설비)`) : '「정보통신설비 유지보수·관리기준」 별표 1에 따른 점검대상 설비',
     '위탁대행업무': tasks,
     '제출서류': docs.map((d, k) => `${k + 1}. ${d}`).join('\n'),
     '계약금': dep ? `${amtTxt(depAmt, C.vat)} (계약금액의 ${dep}%) 계약 체결 후 지급` : '-',
     '잔금': `${CTR_PAYP[C.payCond] || CTR_PAYP.final} ${100 - dep}% 지급${ctrInst(C) ? ` (${instTxt(ctrInst(C))})` : ''}`,
-    '대가지급조건': [dep ? `계약금 ${dep}%(￦${won(depAmt)}) 계약 체결 후 지급` : '', `${dep ? `잔금 ${100 - dep}%` : '계약금액'} ${(CTR_PAYC.find(p => p[0] === C.payCond) || CTR_PAYC[0])[1]}${C.payCond === 'final' || !C.payCond ? '(제13조 결과물)' : ''}`, ctrInst(C) ? `└ 분할 지급: ${instTxt(ctrInst(C))} (합계 ￦${won(ctrInst(C).rem)})` : '', `세금계산서 발행일로부터 ${+C.payDays || 30}일 이내 ${C.payWay || '현금(계좌이체)'} 지급`],
-    '계약보증': C.bond ? `① "수급인"은 계약을 체결한 이후 7일 이내에 본 계약에 따른 의무의 이행에 대한 담보로서 계약이행 보증증권(계약금의 ${+C.bondRate || 10}% 이내)을 "발주자"에게 제출하여야 한다.\n② "발주자"가 제1항에 따른 계약이행 보증증권을 사용하고자 하는 경우에는 사전에 그 사실 및 사유를 "수급인"에게 통보하여야 한다.` : '"수급인"의 계약이행 보증증권 제출은 "발주자"와 "수급인"이 합의하여 면제한다.',
+    '대가지급조건': [dep ? `계약금 ${dep}%(￦${won(depAmt)}): 계약 체결 후 지급` : '', `${dep ? `잔금 ${100 - dep}%` : '계약금액 전액'}: ${C.payCond === 'final' || !C.payCond ? '제13조에 따른 결과물 제출 후 일괄 지급' : (CTR_PAYC.find(p => p[0] === C.payCond) || CTR_PAYC[0])[1]}`, ctrInst(C) ? `└ 분할 지급: ${instTxt(ctrInst(C))} (합계 ￦${won(ctrInst(C).rem)})` : '', `세금계산서 발행일로부터 ${+C.payDays || 30}일 이내 ${C.payWay || '현금(계좌이체)'} 지급`],
+    '계약보증': C.bond ? `① "수급인"은 계약을 체결한 이후 7일 이내에 본 계약에 따른 의무의 이행에 대한 담보로서 계약이행 보증증권(계약금액의 ${+C.bondRate || 10}% 이내)을 "발주자"에게 제출하여야 한다.\n② "발주자"가 제1항에 따른 계약이행 보증증권을 사용하고자 하는 경우에는 사전에 그 사실 및 사유를 "수급인"에게 통보하여야 한다.` : '"수급인"의 계약이행 보증증권 제출은 "발주자"와 "수급인"이 합의하여 면제한다.',
   };
 }
-const ctrFill = (s, V) => String(s || '').replace(/\{\{([^}]+)\}\}/g, (m, k) => V[k] != null ? (Array.isArray(V[k]) ? V[k].join(', ') : V[k]) : m);
+/* 받침 있으면 a, 없으면 b — 한글·영문(L·M·N·R)·숫자(0·1·3·6·7·8) 끝 글자 기준 */
+const josa = (w, a, b) => { const t = String(w || '').replace(/[\s)"'”’\]]+$/, ''), ch = t.slice(-1), c = ch.charCodeAt(0);
+  if (c >= 0xAC00 && c <= 0xD7A3) return (c - 0xAC00) % 28 ? a : b;
+  if (/[lmnrLMNR]/.test(ch)) return a; if (/[013678]/.test(ch)) return a; return b; };
+const JOSA = { '이/가': ['이', '가'], '을/를': ['을', '를'], '와/과': ['과', '와'], '은/는': ['은', '는'] };
+const ctrFill = (s, V) => String(s || '').replace(/\{\{([^}]+)\}\}(\{\{(이\/가|을\/를|와\/과|은\/는)\}\})?/g, (m, k, jo, jk) => { const v = V[k] != null ? (Array.isArray(V[k]) ? V[k].join(', ') : V[k]) : null; if (v == null) return m; return jo ? v + josa(v, ...JOSA[jk]) : v; })
+  .replace(/(유지보수·관리)이(\s)/g, '$1가$2').replace(/수행하는데 필요한/g, '수행하는 데 필요한').replace(/보증증권\(계약금의/g, '보증증권(계약금액의');
 const ctrQ = s => esc(s).replace(/&quot;([^&]*?)&quot;/g, '“$1”');
 function ctrBody(b){ return b.split('\n').filter(l => l.trim()).map(l => `<p class="${/^[①-⑳]/.test(l) ? 'h' : /^(\d+|[가-하])\.\s?/.test(l) ? 'ho' : /^\[/.test(l) ? 'br' : 'p'}">${ctrQ(l)}</p>`).join(''); }
 function ctrPages(C){
@@ -3195,7 +3224,7 @@ function ctrPages(C){
   const sub = (n, k, val) => `<tr><td></td><td class="k s">${n}) ${k}</td><td class="c">:</td><td colspan="2">${val}</td></tr>`;
   const tasks = V['위탁대행업무'];
   const cover = `<div class="cbox"><div class="cttl">${esc(title)}</div>
-    <p class="pre"><b>${esc(V['발주자'] || '　　　　')}</b> (이하 “발주자”라 한다)와 <b>${esc(V['수급인'] || '　　　　')}</b> (이하 “수급인”이라 한다)는 아래 사항에 대하여 신의에 따라 성실하게 계약상의 의무를 이행할 것을 확약하며 이를 증명하기 위하여 계약서 2부를 작성하여 각각 1부씩 보관한다.</p>
+    <p class="pre"><b>${esc(V['발주자'] || '　　　　')}</b>(이하 “발주자”라 한다)${V['발주자'] ? josa(V['발주자'], '과', '와') : '와'} <b>${esc(V['수급인'] || '　　　　')}</b>(이하 “수급인”이라 한다)${V['수급인'] ? josa(V['수급인'], '은', '는') : '는'} 아래 사항에 대하여 신의에 따라 성실하게 계약상의 의무를 이행할 것을 확약하며 이를 증명하기 위하여 계약서 2부를 작성하여 각각 1부씩 보관한다.</p>
     <div class="csub">- 계 약 내 용 -</div>
     <table class="clist">${kv('1.', '계 약 명', esc(V['계약명']))}${kv('2.', '발 주 자', esc(V['발주자']))}${kv('3.', '주 소', esc(V['주소']))}${kv('4.', '계약기간', esc(V['계약기간']))}${kv('5.', '계약금액', `<b>${esc(V['계약금액'])}</b>`)}
       <tr><td class="n">6.</td><td class="k">대가지급조건</td><td class="c">:</td><td colspan="2">${V['대가지급조건'].filter(Boolean).map(t => `<div>${esc(t)}</div>`).join('')}</td></tr>
@@ -3333,20 +3362,217 @@ function ctrSet(f, val){ const C = UI.ctr; if (!C) return false;
   return ['vendorId', 'vat', 'bond', 'end', 'deposit', 'payCond'].includes(f) ? true : 'soft';
 }
 
+/* ===== 계측기 현황 (대행업체 보유 장비 · 교정 관리 · 필요 계측기 확인) ===== */
+const TOOL_ITEMS = { '접지저항측정기': '접지저항 측정', '산소 및 유해가스 농도 측정기': '맨홀 내 산소·유해가스 농도 측정', '아날로그/디지털 멀티미터': 'AC·DC 전압, 전류, 저항 측정', '열화상 카메라': '장비·단자 발열 상태 확인', '디지털 RF 신호 계측기': '방송 신호 레벨 측정', '다기능 전계강도 측정기/스펙트럼 분석기': '전계강도·RSRP·스퓨리어스 측정', '광 멀티미터': '광 송·수신 레벨 측정', 'RF 자기장 강도 측정기': 'RF카드 자기장 세기 측정', 'RF 전자파 측정기': 'RF카드 인식거리·전자파 측정', '노트북(PING TEST)': '네트워크 연결·링크 속도 확인', '비중계': '축전지 전해액 비중 측정' };
+const TOOL_ST = [['ok', '사용 가능'], ['repair', '수리·점검 중'], ['out', '폐기·반납']];
+const tnorm = s => String(s || '').toLowerCase().replace(/[\s/()·,.-]/g, '');
+function toolDue(t){ if (t.calDue) return t.calDue; if (!t.calDate) return ''; return addDays(addYears(t.calDate, +t.calCycle || 1), -1); }
+function toolStat(t){ if (t.status === 'out') return ['폐기·반납', '', 99999]; if (t.status === 'repair') return ['수리·점검 중', 'warn', -1]; const d = toolDue(t); if (!d) return ['교정 미등록', '', 9999]; const n = daysTo(d); return n < 0 ? [`교정 만료 ${-n}일 지남`, 'bad', n] : n <= 30 ? [`교정 D-${n}`, 'warn', n] : [`교정 유효 · ${fmtDate(d)}`, 'ok', n]; }
+function toolNeed(eqIds){ const m = new Map(); eqIds.forEach(eq => String(REP.tools[eq] || '').split(',').map(x => x.trim()).filter(Boolean).forEach(x => { const k = x === 'PING TEST' || x === '노트북' ? '노트북(PING TEST)' : x.replace(/^광멀티미터$/, '광 멀티미터'); if (!m.has(k)) m.set(k, []); if (!m.get(k).includes(eq)) m.get(k).push(eq); })); return [...m.entries()]; }
+const toolHas = (tools, name) => tools.find(t => t.status !== 'out' && (tnorm(t.name).includes(tnorm(name)) || tnorm(name).includes(tnorm(t.name))) && tnorm(t.name));
+PAGES.meter = () => {
+  const vs = vendors(), os = owners();
+  let h = pageHead('', '계측기 현황', '대행업체가 보유한 점검·계측 장비와 교정 유효기간을 관리합니다. 여기 등록한 장비는 결과보고서 「2.2 장비현황」에 그대로 들어가고, 교정 만료가 다가오면 대시보드 할 일에 표시됩니다.', vs.length ? sel('mt_vendor', vs.map(x => [x.id, x.name]), UI.mtV && S.vendors[UI.mtV] ? UI.mtV : vs[0].id, 'data-act="mtvendor" style="width:auto"') : '');
+  if (!vs.length) return h + emptyBox('등록된 대행업체가 없습니다', '계측기는 대행업체별로 관리합니다. 대행업체를 먼저 등록하세요.', `<button class="btn pri" data-go="vendor-cert">대행업체 등록</button>`);
+  const vid = UI.mtV && S.vendors[UI.mtV] ? UI.mtV : vs[0].id, v = S.vendors[vid]; UI.mtV = vid;
+  const ts = v.tools || []; if (ts.some(t => !t.id)){ ts.forEach(t => { if (!t.id) t.id = uid(); }); touch('vendors', vid, 300); }
+  const live = ts.filter(t => t.status !== 'out'), st = live.map(toolStat);
+  const nOk = st.filter(s => s[1] === 'ok').length, nSoon = st.filter(s => s[1] === 'warn' && s[2] >= 0).length, nBad = st.filter(s => s[1] === 'bad').length, nNone = st.filter(s => s[0] === '교정 미등록').length;
+  h += `<div class="d2stats" style="margin-bottom:16px">
+    <div class="d2s"><div class="d2ico">${navIc('meter')}</div><div><span>보유 계측기</span><b class="num">${live.reduce((a, t) => a + (+t.qty || 1), 0)}<small>대</small></b><em>${live.length}종 · ${esc(v.name)}</em></div></div>
+    <div class="d2s"><div class="d2ico" style="background:var(--ok-soft,#e6f4ea);color:var(--ok)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><div><span>교정 유효</span><b class="num">${nOk}<small>종</small></b><em>다음 교정일 30일 이상 남음</em></div></div>
+    <div class="d2s ${nSoon ? 'warn' : ''}"><div class="d2ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg></div><div><span>30일 내 교정 만료</span><b class="num">${nSoon}<small>종</small></b><em>${nSoon ? '교정 일정 잡기' : '해당 없음'}</em></div></div>
+    <div class="d2s ${nBad ? 'bad' : ''}"><div class="d2ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 2.8 19.5h18.4z"/><path d="M12 10v4M12 17h.01"/></svg></div><div><span>교정 만료 · 미등록</span><b class="num">${nBad}<small>/ ${nNone}</small></b><em>만료 ${nBad}종 · 교정일 미입력 ${nNone}종</em></div></div></div>`;
+  const cin = (n, f, val, type = 'text', extra = '') => `<input class="inp sm" type="${type}" id="mt_${n}_${f}" data-act="mtf" data-v="${vid}" data-i="${n}" data-f="${f}" value="${esc(val ?? '')}" ${extra}>`;
+  h += `<div class="panel"><div class="panel-h"><div><h3>보유 계측기 목록 <span class="small muted num">${ts.length}종</span></h3><span class="small muted">교정일만 넣으면 다음 교정일은 교정 주기(기본 1년)로 자동 계산됩니다 · 사진은 보고서 장비 카드에 들어갑니다</span></div><div class="row"><button class="btn sm" data-act="mtdef" data-v="${vid}">해설서 기본 계측기 불러오기</button><button class="btn sm pri" data-act="mtadd" data-v="${vid}">+ 계측기 추가</button></div></div>
+    ${ts.length ? `<div class="tw"><table class="mttbl"><colgroup><col style="width:76px"><col style="width:20%"><col style="width:14%"><col style="width:9%"><col style="width:56px"><col style="width:138px"><col style="width:58px"><col style="width:10%"><col style="width:132px"><col style="width:56px"></colgroup><thead><tr><th>사진</th><th>장비명 · 측정 항목</th><th>제조사 / 모델</th><th>일련번호</th><th class="c">수량</th><th>최근 교정일</th><th>주기(년)</th><th>교정기관</th><th>상태</th><th></th></tr></thead><tbody>${ts.map((t, n) => { const pid = `tool__vendors__${vid}__${t.id}`, s = getPhoto(pid), [stt, cls] = toolStat(t);
+      return `<tr><td><label class="thumb mtph" for="sl_${pid}" title="장비 사진 올리기">${s ? `<img src="${s}" alt="${esc(t.name)} 사진">` : '＋ 사진'}</label><input type="file" id="sl_${pid}" accept="image/*" class="vh" data-slot="${pid}"></td>
+        <td>${cin(n, 'name', t.name, 'text', 'placeholder="장비명"')}${cin(n, 'items', t.items, 'text', `placeholder="${esc(TOOL_ITEMS[t.name] || '측정 항목')}" style="margin-top:4px"`)}</td>
+        <td>${cin(n, 'model', t.model, 'text', 'placeholder="제조사 · 모델명"')}</td><td>${cin(n, 'serial', t.serial)}</td><td>${cin(n, 'qty', t.qty || 1, 'number', 'min="1" style="text-align:right"')}</td>
+        <td>${cin(n, 'calDate', t.calDate, 'date')}</td><td>${cin(n, 'calCycle', t.calCycle || 1, 'number', 'min="1" max="5"')}</td><td>${cin(n, 'calOrg', t.calOrg, 'text', 'placeholder="교정기관"')}</td>
+        <td><span class="chip ${cls}">${esc(stt)}</span><select class="inp sm" id="mt_${n}_status" data-act="mtf" data-v="${vid}" data-i="${n}" data-f="status" style="margin-top:4px">${TOOL_ST.map(([k, l]) => `<option value="${k}" ${(t.status || 'ok') === k ? 'selected' : ''}>${l}</option>`).join('')}</select></td>
+        <td><button class="btn sm ghost danger" data-act="mtdel" data-v="${vid}" data-i="${n}">${UI.armed === 'mt' + t.id ? '한 번 더' : '삭제'}</button></td></tr>`; }).join('')}</tbody></table></div>`
+    : `<div class="dempty">등록된 계측기가 없습니다. 「해설서 기본 계측기 불러오기」로 11종을 한 번에 넣은 뒤 모델·교정일을 채우세요.</div>`}</div>`;
+  /* 관리대상별 필요 계측기 */
+  const oid = UI.mtO && S.owners[UI.mtO] ? UI.mtO : (os[0] || {}).id, o = S.owners[oid];
+  const eqIds = o ? (ownerTargets(o).length ? ownerTargets(o) : []) : [];
+  const need = toolNeed(eqIds), miss = need.filter(([n]) => !toolHas(ts, n));
+  h += `<div class="panel" style="margin-top:18px"><div class="panel-h"><div><h3>관리대상별 필요 계측기 확인</h3><span class="small muted">업무해설서 「설비별 점검 및 계측 장비 현황」 기준 · 관리대상의 점검 대상 설비에 필요한 장비를 ${esc(v.name)} 보유 목록과 대조합니다</span></div>${os.length ? sel('mt_owner', os.map(x => [x.id, x.name]), oid, 'data-act="mtowner" style="width:auto"') : ''}</div>
+    ${!o ? '<div class="dempty">등록된 관리대상이 없습니다.</div>' : !eqIds.length ? `<div class="dempty">${esc(o.name)}의 점검 대상 설비가 아직 체크되지 않았습니다. <button class="btn sm" data-go="owner-info">대상 설비 등록</button></div>`
+    : `<div class="row" style="margin-bottom:10px"><span class="chip ${miss.length ? 'warn' : 'ok'}">${miss.length ? `부족 ${miss.length}종` : '필요 장비 모두 보유'}</span><span class="small muted">점검 대상 설비 ${eqIds.length}종 · 필요 계측기 ${need.length}종</span></div>
+      <div class="needgrid">${need.map(([n, eqs]) => { const has = toolHas(ts, n), [stt, cls] = has ? toolStat(has) : ['미보유', 'bad']; return `<div class="needc ${has ? (cls === 'ok' ? 'ok' : 'warn') : 'bad'}"><div class="row" style="justify-content:space-between;gap:8px"><b>${esc(n)}</b><span class="chip ${has ? cls : 'bad'}">${has ? esc(stt) : '미보유'}</span></div><span class="small muted">${eqs.map(e => esc(EQM[e].name)).join(', ')}</span>${has ? '' : `<button class="btn sm" data-act="mtaddname" data-v="${vid}" data-name="${esc(n)}">목록에 추가</button>`}</div>`; }).join('')}</div>`}</div>`;
+  return h;
+};
+
+/* ===== 견적서 (대가산정 연동) ===== */
+function qtDefaults(C, o){
+  const vs = vendors(), bv = vs.find(v => /미래\s*BM/i.test(v.name || '')) || vs[0], scope = costWork(C);
+  return { vendorId: bv ? bv.id : '', no: `Q-${today().replace(/-/g, '')}-01`, date: today(), valid: 30, attn: o.manager || '', title: `${o.name ? o.name + ' ' : ''}정보통신설비 ${scope} 용역`, note: '' };
+}
+function qtRows(C, R){
+  const rows = [];
+  GRADES.forEach(x => { const q = +R.split[x] || 0; if (q) rows.push({ t: `직접인건비 — ${x} 정보통신기술자`, spec: '엔지니어링 노임단가', u: '인', q: q.toFixed(2), p: +C.price[x] || 0, a: q * (+C.price[x] || 0) }); });
+  [['여비', C.travel], ['차량운행비', C.car], ['현장소요경비 등', C.site]].forEach(([t, v]) => { if (+v) rows.push({ t: `직접경비 — ${t}`, spec: '', u: '식', q: '1', p: +v, a: +v }); });
+  rows.push({ t: '제경비', spec: `직접인건비의 ${R.ovhR}%`, u: '식', q: '1', p: R.ovh, a: R.ovh });
+  rows.push({ t: '기술료', spec: `(직접인건비+제경비)의 ${R.feeR}%`, u: '식', q: '1', p: R.fee, a: R.fee });
+  return rows;
+}
+/* 견적서 묶음: 표지 · 견적서 · 산출내역서 · 산출기준 */
+function qtPaginate(blocks, LIM = 975){
+  let hs = null;
+  try { const host = document.createElement('div'); host.className = 'rpt'; host.style.cssText = 'position:absolute;left:-9999px;top:0;visibility:hidden';
+    host.innerHTML = `<section class="pg qt" style="height:auto">${blocks.map(b => `<div class="cb" style="display:flow-root">${b}</div>`).join('')}</section>`; document.body.appendChild(host);
+    hs = [...host.querySelectorAll('.cb')].map(el => el.getBoundingClientRect().height); host.remove(); if (!hs.some(x => x > 0)) hs = null; } catch(e){ hs = null; }
+  const pages = [[]]; let used = 0;
+  blocks.forEach((b, k) => { const n = hs ? hs[k] : 300; if (used + n > LIM && pages.at(-1).length){ pages.push([]); used = 0; } pages.at(-1).push(`<div class="cb" style="display:flow-root">${b}</div>`); used += n; });
+  return pages.map(p => p.join(''));
+}
+function qtPages(C, R, Q, o){
+  const v = S.vendors[Q.vendorId] || {}, seal = Q.vendorId ? getPhoto(`seal__vendors__${Q.vendorId}`) : null, logo = Q.vendorId ? getPhoto(`logo__vendors__${Q.vendorId}`) : null;
+  const w = n => won(Math.round(n)), due = addDays(Q.date || today(), +Q.valid || 30), coef = coefOf(C.area), times = R.times, P = R.parts, RN = ['Ⅰ', 'Ⅱ'], ptxt = x => `${x.t} (${x.cyc === '반기 1회' && x.n === 2 ? '반기 1회 · ' : ''}연 ${x.n}회)`;
+  const supply = R.appliedEx, vat = R.applied - R.appliedEx, adj = supply - Math.round(R.sub);
+  const tg = ownerTargets(o).map(id => EQM[id] ? EQM[id].name : '').filter(Boolean);
+  /* 1. 표지 */
+  const cover = `<div class="qcov"><div class="qcsub">정보통신설비 유지보수·관리 및 성능점검</div><div class="qctl">견&nbsp;&nbsp;적&nbsp;&nbsp;서</div><div class="qcname">${esc(Q.title)}</div>
+    <table class="qcinfo"><tr><th>수&nbsp;&nbsp;&nbsp;신</th><td>${esc(o.name || '')} 귀하${Q.attn ? ` (담당: ${esc(Q.attn)})` : ''}</td></tr><tr><th>견적번호</th><td>${esc(Q.no)}</td></tr><tr><th>견적일자</th><td>${dKo(Q.date)}</td></tr><tr><th>유효기간</th><td>${dKo(due)}까지</td></tr><tr><th>합계금액</th><td><b>일금 ${wonKo(R.applied)}원정 (₩${w(R.applied)})</b> · VAT 포함</td></tr></table>
+    <div class="qctoc"><b>목&nbsp;&nbsp;차</b><ol><li>견적서</li><li>산출내역서</li><li>산출기준 (「정보통신설비 유지보수·관리기준」 [별표 3])</li></ol></div>
+    <div class="qcfrom">${logo ? `<img class="qclogo" src="${logo}" alt="${esc(v.name || '')} 로고">` : ''}<div class="qcco">${esc(v.name || '')}</div><div class="qcceo">대표이사&nbsp;&nbsp;${esc(v.ceo || '')}<span class="sealbox">(인)${seal ? `<img src="${seal}" alt="직인">` : ''}</span></div></div></div>`;
+  /* 2. 견적서 (요약) */
+  const sumRows = x => [['직접인건비', `투입인원 ${x.people.toFixed(2)}인 × 노임단가`, x.labor], ['직접경비', '여비·차량운행비·현장소요경비', x.direct], ['제경비', `직접인건비의 ${R.ovhR}%`, x.ovh], ['기술료', `(직접인건비+제경비)의 ${R.feeR}%`, x.fee]];
+  const subLbl = P.map((x, k) => RN[k]).join('+');
+  const quote = `<div class="qttl">견&nbsp;&nbsp;&nbsp;적&nbsp;&nbsp;&nbsp;서</div>
+    <div class="qtop"><div class="qto"><table class="qmeta"><tr><th>견적번호</th><td>${esc(Q.no)}</td></tr><tr><th>견적일자</th><td>${dKo(Q.date)}</td></tr><tr><th>유효기간</th><td>${dKo(due)}까지 (${+Q.valid || 30}일)</td></tr></table>
+      <div class="qrcv"><b>${esc(o.name || '　　　　')}</b> 귀하</div>${Q.attn ? `<div class="small">담당: ${esc(Q.attn)}</div>` : ''}<p class="qmsg">아래와 같이 견적합니다.</p></div>
+      <table class="qsup"><tr><th rowspan="5" class="vh2">공<br>급<br>자</th><th>등록번호</th><td colspan="3">${esc(v.bizNo || '')}</td></tr>
+        <tr><th>상호</th><td>${esc(v.name || '')}</td><th>대표자</th><td class="sg">${esc(v.ceo || '')}<span class="sealbox">(인)${seal ? `<img src="${seal}" alt="직인">` : ''}</span></td></tr>
+        <tr><th>주소</th><td colspan="3">${esc(v.addr || '')}</td></tr><tr><th>업태·종목</th><td colspan="3">${esc(v.biz || '정보통신공사업 · 유지보수·관리 및 성능점검')}</td></tr>
+        <tr><th>전화</th><td>${esc(v.tel || '')}</td><th>팩스</th><td>${esc(v.fax || '')}</td></tr></table></div>
+    <table class="qsum"><tr><th>건&nbsp;&nbsp;명</th><td>${esc(Q.title)}</td></tr><tr><th>합계금액</th><td><b>일금 ${wonKo(R.applied)}원정</b> (₩${w(R.applied)}) <span class="small">부가가치세 포함</span></td></tr>
+      ${P.length > 1 ? `<tr><th>구분 금액</th><td class="qparts">${P.map((x, k) => `<span>${RN[k]}. ${x.t} <small>연 ${x.n}회</small> <b>₩${w(x.applied)}</b></span>`).join('')}</td></tr>` : ''}</table>
+    <table class="qitems"><thead><tr><th style="width:36px">순번</th><th style="width:120px">품명</th><th>산출 기준</th><th style="width:42px">단위</th><th style="width:42px">수량</th><th style="width:104px">금액</th></tr></thead><tbody>
+      ${P.map((x, k) => `<tr class="grp"><td class="c">${RN[k]}</td><td colspan="5">정보통신설비 ${ptxt(x)}</td></tr>
+        ${sumRows(x).map(([t, sp, a], n) => `<tr><td class="c">${n + 1}</td><td>${t}</td><td class="sm">${esc(sp)}</td><td class="c">식</td><td class="r">1</td><td class="r">${w(a)}</td></tr>`).join('')}
+        <tr class="st"><td></td><td colspan="4">${RN[k]}. ${x.t} 소계</td><td class="r">${w(x.sub)}</td></tr>`).join('')}
+      ${P.length > 1 ? `<tr class="st"><td></td><td colspan="4">소계 합계 (${subLbl})</td><td class="r">${w(R.sub)}</td></tr>` : ''}
+      ${adj ? `<tr><td></td><td colspan="4">${R.rate !== 100 ? `요율 적용(${R.rate}%) 및 ` : ''}단수 조정</td><td class="r">${adj < 0 ? '−' : ''}${w(Math.abs(adj))}</td></tr>` : ''}
+      <tr class="st"><td></td><td colspan="4">공급가액</td><td class="r">${w(supply)}</td></tr><tr><td></td><td colspan="4">부가가치세 (10%)</td><td class="r">${w(vat)}</td></tr>
+      <tr class="tot"><td></td><td colspan="4">합&nbsp;&nbsp;계</td><td class="r">${w(R.applied)}</td></tr></tbody></table>
+    <div class="qnote"><b>특기사항</b><ol>${[`업무 범위: ${P.map(x => ptxt(x)).join(', ') || '-'}${tg.length ? ` · 점검 대상 설비 ${tg.length}종` : ''}${+C.area ? ` · 연면적 ${(+C.area).toLocaleString('ko-KR')}㎡` : ''}`, '세부 산출 근거는 첨부한 산출내역서와 산출기준에 따릅니다.', '정보통신설비의 고장에 따른 수리·교체 비용은 포함되지 않습니다.', ...(P.length > 1 ? ['구분 금액은 직접인건비·직접경비·제경비·기술료를 업무별 연간 횟수 비율로 나눈 금액입니다.'] : []), ...String(Q.note || '').split('\n').map(x => x.trim()).filter(Boolean)].map(x => `<li>${esc(x)}</li>`).join('')}</ol></div>`;
+  /* 3. 산출내역서 */
+  const on = R.rows.filter(x => x.r.on);
+  const calc = [
+    `<div class="qh">산 출 내 역 서</div><div class="qsubt">${esc(Q.title)} · 연면적 ${(+C.area || 0).toLocaleString('ko-KR')}㎡ · 조정계수 ${coef.toFixed(2)} · ${P.map(x => `${x.t} 연 ${x.n}회`).join(' + ')}</div>`,
+    `<h4 class="qh4">1. 투입인원 산정 <small>(대상 설비 수량 × 기준인원 × 조정계수)</small></h4><table class="qitems"><thead><tr><th style="width:34px">순번</th><th>대상 정보통신설비</th><th style="width:42px">단위</th><th style="width:48px">수량</th><th style="width:62px">기준인원</th><th style="width:62px">조정계수</th><th style="width:72px">산정인원</th></tr></thead><tbody>
+      ${on.length ? on.map((x, n) => `<tr><td class="c">${n + 1}</td><td>${esc(x.e.name)}</td><td class="c">${x.e.unit}</td><td class="r">${esc(x.r.q)}</td><td class="r">${x.e.base.toFixed(2)}</td><td class="r">${x.e.adj ? coef.toFixed(2) : '-'}</td><td class="r">${x.n.toFixed(3)}</td></tr>`).join('') : '<tr><td colspan="7" class="c">대상 설비가 선택되지 않았습니다</td></tr>'}
+      <tr class="st"><td></td><td colspan="5">1회 투입인원 합계</td><td class="r">${R.tot.toFixed(3)}</td></tr>${P.map((x, k) => `<tr><td class="c">${RN[k]}</td><td colspan="5">${x.t} 투입인원 (1회 ${R.tot.toFixed(3)}인 × 연 ${x.n}회)</td><td class="r">${x.people.toFixed(2)}</td></tr>`).join('')}<tr class="tot"><td></td><td colspan="5">총 투입인원 (1회 ${R.tot.toFixed(3)}인 × 연 ${times}회)</td><td class="r">${R.people.toFixed(2)}</td></tr></tbody></table>`,
+    `<h4 class="qh4">2. 직접인건비 <small>(투입인원 × 엔지니어링기술자 기술등급별 노임단가)</small></h4><table class="qitems"><thead><tr><th>기술등급</th><th style="width:90px">투입(인)</th><th style="width:120px">노임단가(원/인)</th><th style="width:120px">금액(원)</th></tr></thead><tbody>
+      ${GRADES.map(x => `<tr><td>${x} 정보통신기술자</td><td class="r">${(+R.split[x] || 0).toFixed(2)}</td><td class="r">${w(C.price[x])}</td><td class="r">${w((+R.split[x] || 0) * (+C.price[x] || 0))}</td></tr>`).join('')}
+      <tr class="tot"><td>계</td><td class="r">${GRADES.reduce((a, x) => a + (+R.split[x] || 0), 0).toFixed(2)}</td><td></td><td class="r">${w(R.labor)}</td></tr></tbody></table>`,
+    `<h4 class="qh4">3. 직접경비</h4><table class="qitems"><thead><tr><th>항목</th><th style="width:60px">단위</th><th style="width:60px">수량</th><th style="width:120px">금액(원)</th><th style="width:150px">비고</th></tr></thead><tbody>
+      ${[['여비', C.travel], ['차량운행비', C.car], ['현장소요경비 등', C.site]].map(([t, a]) => `<tr><td>${t}</td><td class="c">식</td><td class="r">1</td><td class="r">${w(+a || 0)}</td><td class="sm">${+a ? '' : '해당 없음'}</td></tr>`).join('')}
+      <tr class="tot"><td>계</td><td></td><td></td><td class="r">${w(R.direct)}</td><td></td></tr></tbody></table>`,
+    `<h4 class="qh4">4. 제경비 · 기술료 · 부가가치세</h4><table class="qitems"><thead><tr><th style="width:110px">항목</th><th>산식</th><th style="width:120px">금액(원)</th></tr></thead><tbody>
+      <tr><td>제경비</td><td class="sm">직접인건비 ${w(R.labor)} × ${R.ovhR}%</td><td class="r">${w(R.ovh)}</td></tr>
+      <tr><td>기술료</td><td class="sm">(직접인건비 ${w(R.labor)} + 제경비 ${w(R.ovh)}) × ${R.feeR}%</td><td class="r">${w(R.fee)}</td></tr>
+      <tr class="st"><td>소계</td><td class="sm">직접인건비 + 직접경비 + 제경비 + 기술료</td><td class="r">${w(R.sub)}</td></tr>
+      <tr><td>부가가치세</td><td class="sm">소계 × 10%</td><td class="r">${w(R.vat)}</td></tr>
+      <tr class="st"><td>산정금액</td><td class="sm">소계 + 부가가치세 (천원 미만 절사)</td><td class="r">${w(R.total)}</td></tr>
+      <tr><td>요율 적용</td><td class="sm">산정금액 × ${R.rate}% (천원 미만 절사)</td><td class="r">${w(R.applied)}</td></tr>
+      <tr class="tot"><td>견적금액</td><td class="sm">공급가액 ${w(supply)} + 부가가치세 ${w(vat)}</td><td class="r">${w(R.applied)}</td></tr>
+      ${+C.area ? `<tr><td>㎡당 단가</td><td class="sm">견적금액 ÷ 연면적 ${(+C.area).toLocaleString('ko-KR')}㎡ (VAT 별도 ₩${w(R.perM2Ex)}/㎡)</td><td class="r">${w(R.perM2)}원/㎡</td></tr>` : ''}</tbody></table>`,
+    `<h4 class="qh4">5. 업무 구분별 산출금액 <small>(연간 횟수 비율 배분 · 원 단위 끝수는 마지막 구분에 합산)</small></h4><table class="qitems qtiny qpt"><thead><tr><th style="width:92px">구분</th><th style="width:36px">횟수</th><th style="width:54px">투입(인)</th><th>직접인건비</th><th>직접경비</th><th>제경비</th><th>기술료</th><th>공급가액</th><th>부가세</th><th>합계</th></tr></thead><tbody>
+      ${P.map((x, k) => `<tr><td>${RN[k]}. ${x.t}</td><td class="c">${x.n}회</td><td class="r">${x.people.toFixed(2)}</td><td class="r">${w(x.labor)}</td><td class="r">${w(x.direct)}</td><td class="r">${w(x.ovh)}</td><td class="r">${w(x.fee)}</td><td class="r">${w(x.appliedEx)}</td><td class="r">${w(x.vat)}</td><td class="r">${w(x.applied)}</td></tr>`).join('')}
+      <tr class="tot"><td>계</td><td class="c">${times}회</td><td class="r">${R.people.toFixed(2)}</td><td class="r">${w(R.labor)}</td><td class="r">${w(R.direct)}</td><td class="r">${w(R.ovh)}</td><td class="r">${w(R.fee)}</td><td class="r">${w(supply)}</td><td class="r">${w(vat)}</td><td class="r">${w(R.applied)}</td></tr></tbody></table>
+      <p class="qfn">공급가액·부가세·합계는 요율 적용 및 천원 미만 절사 후 금액입니다.</p>`,
+  ];
+  /* 4. 산출기준 */
+  const B3 = '「정보통신설비 유지보수·관리기준」 [별표 3]';
+  const crit = [
+    `<div class="qh">산 출 기 준</div><div class="qsubt">${B3} 정보통신설비 유지보수·관리 및 성능점검 대가산정 기준 (제9조제3항 및 제11조제2항 관련)</div>`,
+    `<h4 class="qh4">1. 대가의 구성</h4><table class="qitems"><thead><tr><th>항목</th><th style="width:70px">단위</th><th>산정 방법</th></tr></thead><tbody>
+      <tr><td>1) 직접인건비 (특급·고급·중급·초급 정보통신기술자)</td><td class="c">인</td><td class="sm">대상 설비의 수량 × 표 1 기준인원 × 표 2 조정계수를 수량에 반영하고, 엔지니어링기술자 기술등급별 노임단가를 곱하여 산정</td></tr>
+      <tr><td>2) 직접경비 (여비·차량운행비·현장소요경비 등)</td><td class="c">식</td><td class="sm">당해 업무 수행에 필요한 여비, 차량운행비, 현장소요경비 등</td></tr>
+      <tr><td>3) 제경비</td><td class="c">식</td><td class="sm">직접경비에 포함되지 않는 간접비용 · 직접인건비의 110% 내지 120% 한도</td></tr>
+      <tr><td>4) 기술료</td><td class="c">식</td><td class="sm">점검수행자가 개발·보유한 기술의 사용료 및 이윤 등 · (직접인건비+제경비)의 20% 내지 40% 한도</td></tr>
+      <tr><td>5) 부가가치세</td><td class="c">식</td><td class="sm">(1+2+3+4)의 10%</td></tr></tbody></table>
+      <ol class="qol"><li>관리주체의 요구에 의해 업무범위가 변경 또는 조정될 경우, 계약 당사자 간에 합의하여 대가를 다시 산정할 수 있다.</li><li>직접인건비는 엔지니어링기술자 기술등급별 노임단가를 적용하여 산정한다.</li></ol>`,
+    `<h4 class="qh4">2. 연면적에 따른 조정계수 (표 2) <small>본 건 연면적 ${(+C.area || 0).toLocaleString('ko-KR')}㎡ → ${coef.toFixed(2)}</small></h4><table class="qitems q2col"><thead><tr><th>연면적(㎡)</th><th style="width:80px">조정계수</th><th>연면적(㎡)</th><th style="width:80px">조정계수</th></tr></thead><tbody>
+      ${(() => { const L = [...COEF].reverse().map(([m, c], n, a) => [`${m.toLocaleString('ko-KR')} 이상${a[n + 1] ? ` ~ ${a[n + 1][0].toLocaleString('ko-KR')} 미만` : ''}`, c]); const half = Math.ceil(L.length / 2); return Array.from({ length: half }, (_, k) => { const x = L.at(k), y = L.at(k + half); const cell = z => z ? `<td${z[1] === coef ? ' class="hit"' : ''}>${z[0]}</td><td class="c${z[1] === coef ? ' hit' : ''}">${z[1].toFixed(2)}</td>` : '<td></td><td></td>'; return `<tr>${cell(x)}${k + half < L.length ? cell(y) : '<td></td><td></td>'}</tr>`; }).join(''); })()}</tbody></table>
+      <p class="qfn">비고: 영 제37조의2제1항제1호의 건축물은 「연면적에 따른 조정계수」를 적용한다.</p>`,
+    `<h4 class="qh4">3. 투입인원 산정기준 (표 1) <small>● = 본 건 적용 설비</small></h4><table class="qitems qtiny"><thead><tr><th style="width:24px"></th><th>대상 정보통신설비</th><th style="width:42px">단위</th><th style="width:60px">기준인원</th><th style="width:60px">조정계수</th><th style="width:24px"></th><th>대상 정보통신설비</th><th style="width:42px">단위</th><th style="width:60px">기준인원</th><th style="width:60px">조정계수</th></tr></thead><tbody>
+      ${(() => { const half = Math.ceil(EQ.length / 2); const cell = e => e ? `<td class="c">${on.some(x => x.e.id === e.id) ? '●' : ''}</td><td>${esc(e.name)}</td><td class="c">${e.unit}</td><td class="r">${e.base.toFixed(2)}</td><td class="c">${e.adj ? '√' : '-'}</td>` : '<td></td><td></td><td></td><td></td><td></td>'; return Array.from({ length: half }, (_, k) => `<tr>${cell(EQ.at(k))}${cell(k + half < EQ.length ? EQ.at(k + half) : null)}</tr>`).join(''); })()}</tbody></table>
+      <ol class="qol"><li>기준인원은 기술자 한 명이 유지보수·관리 또는 성능점검을 1회 실시하는데 투입되는 수량을 말한다.</li><li>제8조제3항 및 제10조제3항에 따른 수리·교체 등에 소요되는 기술자의 투입 수량은 포함하지 않는다.</li><li>단위의 “식” 등을 구분하여 적용한다.</li><li>“지능형 경계 감시 시스템”은 경계 구간의 거리 600m를 기준으로 하며, 거리별 증감에 따라 기준인원을 산정하여 적용한다.</li></ol>`,
+    `<h4 class="qh4">4. 본 견적 적용 단가</h4><table class="qitems"><thead><tr><th>구분</th><th>적용 값</th></tr></thead><tbody>
+      ${GRADES.map(x => `<tr><td>${x} 정보통신기술자 노임단가</td><td class="r">${w(C.price[x])}원/인</td></tr>`).join('')}
+      <tr><td>제경비율</td><td class="r">직접인건비의 ${R.ovhR}%</td></tr><tr><td>기술료율</td><td class="r">(직접인건비+제경비)의 ${R.feeR}%</td></tr>${P.map(x => `<tr><td>${x.t} 연간 횟수</td><td class="r">${x.n}회 (${x.cyc})</td></tr>`).join('')}${R.rate !== 100 ? `<tr><td>적용 요율</td><td class="r">${R.rate}%</td></tr>` : ''}</tbody></table>
+      <p class="qfn">노임단가는 해당 연도 엔지니어링기술자 노임단가(한국엔지니어링협회 공표)를 적용합니다.</p>`,
+  ];
+  const all = [{ cls: 'cov', h: cover }, { cls: '', h: quote }, ...qtPaginate(calc).map(h => ({ cls: '', h })), ...qtPaginate(crit).map(h => ({ cls: '', h }))], N = all.length;
+  return all.map((p, k) => `<section class="pg qt ${p.cls}">${p.h}${k ? `<div class="cfoot"><span>${esc(v.name || '')} · ${esc(Q.no)}</span><span>- ${k} / ${N - 1} -</span></div>` : ''}</section>`).join('');
+}
+const QT_CSS = `
+.rpt .pg.qt{height:1123px;min-height:0;overflow:hidden;padding:52px 56px 56px;font-size:11.5px;line-height:1.5;display:block}
+.rpt .pg.qt::before,.rpt .pg.qt::after{display:none}
+.rpt .qt .qttl{text-align:center;font-size:28px;font-weight:800;letter-spacing:.2em;margin:0 0 18px;padding-bottom:10px;border-bottom:3px double #111}
+.rpt .qt table{width:100%;border-collapse:collapse;table-layout:fixed}
+.rpt .qt th,.rpt .qt td{border:1px solid #333!important;padding:4px 7px!important;font-size:11.5px;text-align:left;vertical-align:middle;color:#111;height:auto}
+.rpt .qt th{background:#eef1f4;font-weight:600;text-align:center}
+.rpt .qt .qtop{display:grid;grid-template-columns:1fr 1.15fr;gap:16px;align-items:start;margin-bottom:12px}
+.rpt .qt .qmeta th{width:76px}
+.rpt .qt .qrcv{margin:14px 0 2px;font-size:16px}.rpt .qt .qrcv b{font-size:18px;border-bottom:1.5px solid #111;padding:0 6px 2px}
+.rpt .qt .qmsg{margin:14px 0 0;font-size:12.5px}
+.rpt .qt .qsup th{width:66px}.rpt .qt .qsup th.vh2{width:24px;line-height:1.35}
+.rpt .qt .qsup td.sg{position:relative;padding-right:44px!important}
+.rpt .qt .sealbox{position:absolute;right:8px;top:50%;transform:translateY(-50%);color:#333}
+.rpt .qt .sealbox img{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);max-width:54px;max-height:54px;mix-blend-mode:multiply;opacity:.92}
+.rpt .qt .qsum{margin-bottom:12px}.rpt .qt .qsum th{width:90px}.rpt .qt .qsum td{font-size:12.5px}.rpt .qt .qsum b{font-size:14px}
+.rpt .qt .qitems th{font-size:11px;white-space:nowrap;padding:4px 3px!important}.rpt .qt .qitems td.c{text-align:center}.rpt .qt .qitems td.r{text-align:right;font-variant-numeric:tabular-nums}.rpt .qt .qitems td.sm{font-size:10.5px;color:#333}
+.rpt .qt .qitems tr.st td{background:#f6f7f9;font-weight:600}.rpt .qt .qitems tr.tot td{background:#e3eaf2;font-weight:800;font-size:12.5px}
+.rpt .qt .qnote{margin-top:12px;border:1px solid #555;padding:8px 12px}.rpt .qt .qnote ol{margin:4px 0 0;padding-left:18px}.rpt .qt .qnote li{margin:1px 0;font-size:11px}
+.rpt .qt .qh{text-align:center;font-size:22px;font-weight:800;letter-spacing:.25em;margin:0 0 6px;padding-bottom:8px;border-bottom:2.5px double #111}
+.rpt .qt .qsubt{text-align:center;font-size:11.5px;color:#333;margin-bottom:14px}
+.rpt .qt .qh4{font-size:13px;font-weight:700;margin:14px 0 6px}.rpt .qt .qh4 small{font-weight:400;font-size:11px;color:#444;margin-left:6px}
+.rpt .qt .qol{margin:6px 0 0;padding-left:18px;font-size:10.5px;line-height:1.55}.rpt .qt .qfn{font-size:10.5px;margin:4px 0 0;color:#333}
+.rpt .qt .qitems td.hit{background:#e3eaf2;font-weight:700}.rpt .qt .qtiny td,.rpt .qt .qtiny th{font-size:10.5px;padding:3px 5px!important}
+.rpt .pg.qt.cov{padding:70px 70px 60px}.rpt .qt .qcov{border:2px solid #111;height:100%;box-sizing:border-box;padding:70px 54px 50px;display:flex;flex-direction:column;align-items:center;position:relative}
+.rpt .qt .qcsub{font-size:14px;letter-spacing:.08em;color:#333}.rpt .qt .qctl{font-size:44px;font-weight:800;letter-spacing:.25em;margin:18px 0 10px}.rpt .qt .qcname{font-size:17px;font-weight:700;text-align:center;border-top:1.5px solid #111;border-bottom:1.5px solid #111;padding:10px 18px;margin-bottom:46px}
+.rpt .qt .qcinfo{width:100%;max-width:560px}.rpt .qt .qcinfo th{width:110px;letter-spacing:.1em}.rpt .qt .qcinfo td{font-size:13px;padding:8px 10px!important}
+.rpt .qt .qctoc{margin-top:40px;width:100%;max-width:560px;font-size:13px}.rpt .qt .qctoc ol{margin:8px 0 0;padding-left:22px;line-height:1.9}
+.rpt .qt .qcfrom{margin-top:auto;text-align:center;display:grid;gap:8px;justify-items:center}.rpt .qt .qitems tr.grp td{background:#eef3f8;font-weight:700;color:#1f3a5f}.rpt .qt .qpt td{white-space:nowrap;font-size:10px}.rpt .qt .qpt tr.tot td{font-size:10px}.rpt .qt .qparts{display:flex;flex-wrap:wrap;gap:4px 18px}.rpt .qt .qparts small{color:#666;font-size:10.5px}
+.rpt .qt .qclogo{max-height:40px;max-width:160px;object-fit:contain;margin-bottom:4px}.rpt .qt .qcco{font-size:20px;font-weight:800;letter-spacing:.06em}.rpt .qt .qcceo{font-size:14px;position:relative;padding-right:48px}
+.rpt .qt .cfoot{position:absolute;left:56px;right:56px;bottom:22px;display:flex;justify-content:space-between;font-size:9.5px;color:#666;border-top:1px solid #bbb;padding-top:5px}
+`;
+async function qtExport(fmt){
+  const C = UI.cost; if (!C) return; const o = S.owners[C.oid] || {}, R = costCompute(C), Q = C.q;
+  const pages = qtPages(C, R, Q, o), base = `${(o.name || '견적').replace(/[\\/:*?"<>|]/g, '')}_견적서_${Q.no}`;
+  if (fmt === 'html'){ const html = `<!doctype html><html lang="ko"><head><meta charset="utf-8">${DOC_HEAD}<title>${esc(base)}</title><style>html,body{margin:0;background:#e9ecef;padding:20px 0}@media print{html,body{padding:0;background:#fff}.rpt .pg{box-shadow:none;margin:0}}${RCSS}${QT_CSS}</style></head><body><div class="rpt">${pages}</div></body></html>`; await saveFile(base + '.html', new Blob([html], { type: 'text/html' })); return; }
+  try {
+    busy('PPT 준비 중…'); await loadScript(LIBS.h2i, 'htmlToImage'); await loadScript(LIBS.pptx, 'PptxGenJS');
+    const host = document.createElement('div'); host.className = 'rpt exp'; host.style.cssText = 'position:fixed;left:-12000px;top:0;width:820px;background:#fff;z-index:-1'; host.innerHTML = pages; document.body.appendChild(host);
+    await Promise.all([...host.querySelectorAll('img')].map(im => im.complete ? 0 : new Promise(r => { im.onload = im.onerror = r; })));
+    const pptx = new PptxGenJS(); pptx.defineLayout({ name: 'A4P', width: 8.27, height: 11.69 }); pptx.layout = 'A4P'; pptx.title = base;
+    for (const pg of host.querySelectorAll('.pg')){ await expReady(); const data = await htmlToImage.toJpeg(pg, { quality: .92, pixelRatio: 2, backgroundColor: '#ffffff', skipFonts: true, fontEmbedCSS: '', style: { margin: '0', boxShadow: 'none' } }); pptx.addSlide().addImage({ data, x: 0, y: 0, w: 8.27, h: 11.69 }); }
+    host.remove(); const blob = await pptx.write({ outputType: 'blob' }); busy(null); await saveFile(base + '.pptx', blob);
+  } catch(e){ busy(null); toast('PPT를 만들지 못했습니다'); }
+}
+
 PAGES.cost = () => {
   const os = owners();
   const oid = UI.costOwner === '__none' ? '' : UI.costOwner && S.owners[UI.costOwner] ? UI.costOwner : (os[0] && os[0].id) || '';
   const o = S.owners[oid] || {};
   if (!UI.cost || UI.cost.oid !== oid) UI.cost = costInit(o, oid);
   const C = UI.cost, coef = coefOf(C.area);
-  const { tot, rows, people, g, split, labor, direct, ovhR, feeR, ovh, fee, sub, vat, total, rate, applied, appliedEx, perM2, perM2Ex, perM2Raw, unit, unitAmt } = costCompute(C);
+  const { tot, rows, people, g, split, labor, direct, ovhR, feeR, ovh, fee, sub, vat, total, rate, applied, appliedEx, perM2, perM2Ex, perM2Raw, unit, unitAmt, parts } = costCompute(C);
   const w1 = n => Math.round(n).toLocaleString('ko-KR');
   const cin = (id, f, val, extra = '') => `<input class="inp sm num" id="${id}" data-act="cost" data-f="${f}" inputmode="decimal" value="${esc(val)}" ${extra}>`;
   let h = pageHead('', '대가산정', '[별표 3] 유지보수·관리 및 성능점검 대가산정 기준. 대상 설비 수량 × 기준인원 × 연면적 조정계수로 투입인원을 구하고, 엔지니어링기술자 기술등급별 노임단가를 곱해 직접인건비를 산정합니다.',
     `${os.length ? sel('costowner', [['', '직접 입력'], ...os.map(x => [x.id, x.name])], oid, 'data-act="costowner" style="width:auto"') : ''}`);
   h += `<div class="grid2" style="grid-template-columns:minmax(0,1.25fr) minmax(0,1fr)"><div class="panel"><div class="panel-h"><h3>1. 투입인원 산정</h3><div class="row small"><label class="row" style="gap:6px">연면적(㎡) ${cin('c_area', 'area', C.area, 'style="width:110px"')}</label><span class="chip sky">조정계수 ${coef.toFixed(2)}</span></div></div>
   <div class="tw" style="max-height:520px;overflow-y:auto"><table><thead><tr><th></th><th>대상 정보통신설비</th><th class="c">단위</th><th class="r">수량</th><th class="r">기준인원</th><th class="c">조정</th><th class="r">산정인원</th></tr></thead><tbody>${rows.map(({ e, r, n }) => `<tr style="${r.on ? '' : 'color:var(--muted)'}"><td><input type="checkbox" id="cc_${e.id}" data-act="costeq" data-eq="${e.id}" ${r.on ? 'checked' : ''} aria-label="${esc(e.name)} 포함"></td><td>${esc(e.name)}</td><td class="c">${e.unit}</td><td class="r">${cin('cq_' + e.id, 'q:' + e.id, r.q, `style="width:64px;text-align:right" ${r.on ? '' : 'disabled'}`)}</td><td class="r num">${e.base.toFixed(2)}</td><td class="c">${e.adj ? '√' : '-'}</td><td class="r num">${r.on ? n.toFixed(2) : ''}</td></tr>`).join('')}</tbody><tfoot><tr><th colspan="6">1회 투입인원 합계</th><th class="r num">${tot.toFixed(2)}</th></tr></tfoot></table></div>
-  <div class="row small" style="margin-top:10px"><label class="row" style="gap:6px">연간 점검 횟수 ${cin('c_times', 'times', C.times, 'style="width:60px"')}</label><span class="muted">성능점검 연 1회 · 유지보수·관리 반기 1회(연 2회)</span><b class="num" style="margin-left:auto">총 ${people.toFixed(2)}인</b></div></div>
+  <div class="cscope"><div class="cscope-h"><b>업무 구분</b><span class="small muted">체크한 업무만 산정 · 견적서에도 구분별로 나뉩니다</span></div>
+    ${COST_PARTS.map(([k, t, f, d, cyc]) => { const on = !!C.scope[k], p = parts.find(x => x.k === k); return `<div class="cpart ${on ? 'on' : ''}"><label class="chk"><input type="checkbox" id="csc_${k}" data-act="costscope" data-k="${k}" ${on ? 'checked' : ''}> <b>${t}</b></label><span class="small muted">${cyc}</span><label class="row" style="gap:6px;margin-left:auto">연 ${cin('c_' + f, f, C[f], `style="width:52px;text-align:right" ${on ? '' : 'disabled'}`)}회</label><span class="num cpn">${on && p ? `${p.people.toFixed(2)}인` : '-'}</span></div>`; }).join('')}
+    <div class="cpart tot"><b>총 투입인원</b><span class="small muted">1회 ${tot.toFixed(2)}인 × 연 ${C.times}회</span><b class="num" style="margin-left:auto">${people.toFixed(2)}인</b></div>
+    ${parts.length ? '' : '<p class="small" style="color:var(--warn);margin:4px 0 0">유지보수·관리 또는 성능점검 중 하나 이상을 체크하세요.</p>'}</div></div></div>
   <div class="stack"><div class="panel"><div class="panel-h"><h3>2. 기술등급별 배분·노임단가</h3><button class="btn sm ghost" data-act="costsplitreset">${g} 기준으로 다시 배분</button></div>
   <table><thead><tr><th>기술등급</th><th class="r">투입(인)</th><th class="r">노임단가(원/인)</th><th class="r">금액</th></tr></thead><tbody>${GRADES.map(x => `<tr><td>${x} 정보통신기술자</td><td class="r">${cin('cs_' + x, 'split:' + x, split[x], 'style="width:72px;text-align:right"')}</td><td class="r">${cin('cp_' + x, 'price:' + x, C.price[x], 'style="width:100px;text-align:right"')}</td><td class="r num">${won((+split[x] || 0) * (+C.price[x] || 0))}</td></tr>`).join('')}</tbody></table>
   <p class="small" style="color:var(--warn);margin:8px 0 0">노임단가 기본값은 예시입니다. 해당 연도 엔지니어링기술자 노임단가(한국엔지니어링협회 공표)로 바꿔 입력하세요.</p></div>
@@ -3361,7 +3587,7 @@ PAGES.cost = () => {
     <div class="form" style="margin-top:12px"><label class="f">㎡당 단가로 산정 (비교용, 원/㎡)${cin('c_unit', 'unit', C.unit, 'placeholder="예: 150"')}</label><label class="f">단가 부가세${sel('c_unitvat', [['포함', 'VAT 포함 단가'], ['별도', 'VAT 별도 단가']], C.unitVat || '포함', 'data-act="costvat"')}</label></div>
     ${unit ? `<div class="m2cmp"><span>연면적 ${(+C.area || 0).toLocaleString('ko-KR')}㎡ × ${won(unit)}원${C.unitVat === '별도' ? ' × 1.1' : ''} =</span><b class="num">${won(unitAmt)}원</b><span class="${unitAmt >= applied ? 'up' : 'down'}">기준 대비 ${unitAmt >= applied ? '+' : '−'}${won(Math.abs(unitAmt - applied))}원 (${applied ? (unitAmt / applied * 100).toFixed(1) : '-'}%)</span></div>` : ''}
   </div></div></div>
-  <div class="panel" style="margin-top:22px"><div class="panel-h"><h3>대가산정표</h3><span class="legend">${esc(o.name || '직접 입력')} · 연 ${esc(C.times)}회 기준 · 합계는 천원 미만 절사</span></div>
+  <div class="panel" style="margin-top:22px"><div class="panel-h"><h3>대가산정표</h3><span class="legend">${esc(o.name || '직접 입력')} · ${parts.map(x => `${x.t} 연 ${x.n}회`).join(' + ') || '업무 미선택'} · 합계는 천원 미만 절사</span></div>
   <div class="tw"><table><thead><tr><th>항목</th><th class="c">단위</th><th class="r">수량</th><th class="r">단가</th><th class="r">금액(원)</th><th>비고</th></tr></thead><tbody>
   <tr><td><b>1) 직접인건비</b></td><td></td><td></td><td></td><td class="r num"><b>${won(labor)}</b></td><td></td></tr>
   ${GRADES.map(x => `<tr><td style="padding-left:24px">- ${x} 정보통신기술자</td><td class="c">인</td><td class="r num">${(+split[x] || 0).toFixed(2)}</td><td class="r num">${won(C.price[x])}</td><td class="r num">${won((+split[x] || 0) * (+C.price[x] || 0))}</td><td></td></tr>`).join('')}
@@ -3375,9 +3601,26 @@ PAGES.cost = () => {
   </tbody><tfoot><tr><th>합 계 (산정금액)</th><th></th><th></th><th></th><th class="r num" style="font-size:15px;color:var(--ink)">${won(total)}</th><th>천원 미만 절사</th></tr>
   <tr><th style="font-weight:500">요율 적용</th><th class="c">%</th><th class="r num">${rate}</th><th></th><th class="r num">${won(applied - total)}</th><th style="font-weight:400">산정금액 × ${rate}%</th></tr>
   <tr><th>적용 금액</th><th></th><th></th><th></th><th class="r num" style="font-size:16px;color:var(--navy)">${won(applied)}</th><th style="font-weight:400">공급가액 ${won(appliedEx)} + VAT ${won(applied - appliedEx)}</th></tr>
+  ${parts.map(x => `<tr class="cpartrow"><th style="font-weight:500;padding-left:24px">- ${x.t}</th><th class="c">회</th><th class="r num">${x.n}</th><th></th><th class="r num">${won(x.applied)}</th><th style="font-weight:400">투입 ${x.people.toFixed(2)}인 · 공급가액 ${won(x.appliedEx)} + VAT ${won(x.vat)}</th></tr>`).join('')}
   <tr><th style="font-weight:500">㎡당 단가</th><th class="c">원/㎡</th><th class="r num">${(+C.area || 0).toLocaleString('ko-KR')}㎡</th><th class="r num">${C.area ? w1(perM2) : '-'}</th><th></th><th style="font-weight:400">VAT 별도 ${C.area ? w1(perM2Ex) : '-'}원/㎡</th></tr>
   ${unit ? `<tr><th style="font-weight:500">㎡당 단가 산정(비교)</th><th class="c">원/㎡</th><th class="r num">${(+C.area || 0).toLocaleString('ko-KR')}㎡</th><th class="r num">${won(unit)}</th><th class="r num">${won(unitAmt)}</th><th style="font-weight:400">VAT ${C.unitVat === '별도' ? '별도 단가 → 포함 환산' : '포함 단가'}</th></tr>` : ''}</tfoot></table></div>
   <p class="small muted" style="margin-top:8px">관리주체 요구로 업무범위가 바뀌면 계약 당사자 간 합의로 다시 산정할 수 있습니다. 수리·교체에 드는 투입 수량은 기준인원에 포함되지 않습니다.</p></div>`;
+  /* 견적서 */
+  if (!C.q) C.q = qtDefaults(C, o); if (!C.q.titleTouched) C.q.title = qtDefaults(C, o).title; const Q = C.q, vs = vendors(), R = costCompute(C);
+  const qin = (f, lab, type = 'text', extra = '') => `<label class="f">${lab}<input class="inp sm" type="${type}" id="qt_${f}" data-act="qtf" data-f="${f}" value="${esc(Q[f] ?? '')}" ${extra}></label>`;
+  h += `<div class="grid2" style="grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);align-items:start;margin-top:22px"><div class="panel"><div class="panel-h"><div><h3>견적서</h3><span class="small muted">위 대가산정표 금액으로 견적서가 자동 작성됩니다</span></div></div>
+    <div class="form" style="grid-template-columns:minmax(0,1fr) minmax(0,1fr)">
+      <label class="f" style="grid-column:1/-1">공급자 (대행업체)${vs.length ? sel('qt_vendor', vs.map(x => [x.id, x.name]), Q.vendorId, 'data-act="qtf" data-f="vendorId"') : '<button type="button" class="btn sm" data-go="vendor-cert">대행업체 등록</button>'}</label>
+      <div style="grid-column:1/-1">${qin('title', '건명')}</div>
+      ${qin('no', '견적번호')}${qin('date', '견적일자', 'date')}
+      ${qin('valid', '유효기간(일)', 'number', 'min="1"')}${qin('attn', '수신 담당자')}
+      <label class="f" style="grid-column:1/-1">특기사항 추가 <span class="small muted">(줄마다 한 항목 · 산정 기준·점검 범위·투입인원은 자동으로 들어갑니다)</span><textarea class="inp" id="qt_note" data-act="qtf" data-f="note" rows="3">${esc(Q.note || '')}</textarea></label>
+    </div>
+    <div class="m2cmp" style="margin-top:10px"><span>합계금액</span><b class="num">₩${won(R.applied)}</b><span class="muted">공급가액 ₩${won(R.appliedEx)} + VAT ₩${won(R.applied - R.appliedEx)}</span></div>
+    ${(() => { const lg = Q.vendorId ? getPhoto(`logo__vendors__${Q.vendorId}`) : null, sl = Q.vendorId ? getPhoto(`seal__vendors__${Q.vendorId}`) : null; return `<div class="qtlogo"><div class="ql">${lg ? `<img src="${lg}" alt="로고">` : '<span>로고 없음</span>'}</div><div><b>표지 로고${lg ? '' : ' 미등록'}</b><span class="small muted">${lg ? '등록된 로고가 견적서 표지 회사명 위에 들어갑니다.' : '로고를 등록하면 견적서 표지 회사명 위에 들어갑니다.'}${sl ? '' : ' 직인도 아직 없습니다.'}</span></div><button class="btn sm ${lg ? '' : 'pri'}" data-act="qtlogo" data-v="${Q.vendorId}">${lg ? '로고 바꾸기' : '로고 등록'}</button></div>`; })()}
+    <p class="small muted" style="margin:8px 0 0">공급자 등록번호·주소·대표자·전화는 대행업체 회사정보에서, 로고·직인은 보고서 첨부자료에서 불러옵니다.</p></div>
+    <div class="panel" style="padding:0;overflow:hidden"><div class="panel-h" style="padding:12px 14px;margin:0"><div><h3 style="font-size:14px">견적서 미리보기</h3><span class="small muted">A4 세로</span></div><div class="row"><span class="small muted">내려받기</span><button class="btn sm" data-act="qthtml">HTML</button><button class="btn sm pri" data-act="qtppt">PPT</button></div></div>
+    <div style="overflow:auto;background:var(--sunk);padding:14px 0;max-height:1100px"><div class="rpt" id="qtprev" style="zoom:.7">${qtPages(C, R, Q, o)}</div></div></div></div>`;
   return h;
 };
 
@@ -3449,6 +3692,9 @@ document.addEventListener('click', async ev => {
     case 'ctrtab': UI.ctrTab = d.k; render(); break;
     case 'ctrnew': UI.ctr = ctrNew(); UI.ctrTab = 'write'; go('contract-base'); break;
     case 'ctrhtml': ctrExport('html'); break;
+    case 'qthtml': qtExport('html'); break;
+    case 'qtlogo': if (d.v) go('vendor-info', { vendorSel: d.v, vtab: 'docs' }); else go('vendor-cert'); break;
+    case 'qtppt': if (UI.exporting) break; UI.exporting = true; try { await qtExport('ppt'); } finally { UI.exporting = false; } break;
     case 'ctrppt': if (UI.exporting) break; UI.exporting = true; try { await ctrExport('ppt'); } finally { UI.exporting = false; } break;
     case 'ctrcost': { const C = UI.ctr; if (C){ C.amount = ctrAmount(C.ownerId, C.scope || {}); render(); toast('대가산정 기준 금액으로 바꿨습니다'); } break; }
     case 'ctrsave': { const C = UI.ctr; if (!C || !C.ownerId) break; const it = { ...clone(C), id: C.id || uid(), arts: C.arts || clone(ctrArts()), savedAt: new Date().toISOString() }; const L = ctrList().slice(), k = L.findIndex(x => x.id === it.id); if (k >= 0) L[k] = it; else L.push(it); UI.ctr = clone(it); put('templates', 'contracts', { items: L }); toast(k >= 0 ? '계약을 수정했습니다' : '계약 관리에 저장했습니다'); break; }
@@ -3498,6 +3744,7 @@ document.addEventListener('click', async ev => {
       if (f) f.m.p.splice(f.pi, 1); else if (mid.startsWith('insp__')){ const eq = mid.split('__')[2]; if (I.sheets[eq]) I.sheets[eq].hasPhoto = false; }
       setPhoto(mid, null); UI.lb = null; put('inspections', UI.id, I); toast('사진을 삭제했습니다'); }); break;
     case 'costeq': UI.cost.qty[d.eq].on = a.checked; UI.cost.split = null; render(); break;
+    case 'costscope': { const C = UI.cost; costScope(C); C.scope[d.k] = a.checked; const f = d.k === 'maint' ? 'mt' : 'pt'; if (a.checked && !cnt(C[f])) C[f] = d.k === 'maint' ? 2 : 1; C.split = null; render(); break; }
     case 'costsplitreset': UI.cost.split = null; render(); break;
     case 'rsave': {
       const id = UI.reportId && S.inspections[UI.reportId] ? UI.reportId : document.getElementById('rpick').value;
@@ -3544,6 +3791,12 @@ document.addEventListener('click', async ev => {
     case 'contactadd': case 'contactdef': case 'contactdel': { const id = UI.ownerSel && S.owners[UI.ownerSel] ? UI.ownerSel : owners()[0].id; const ow = S.owners[id]; ow.contacts = ow.contacts || [];
       if (act === 'contactadd') ow.contacts.push(['', '', '']); else if (act === 'contactdef') ow.contacts = ow.contacts.concat(NAT_CONTACTS.filter(r => !ow.contacts.some(c => c[1] === r[1])).map(r => [...r])); else ow.contacts.splice(+d.i, 1);
       put('owners', id, ow); break; }
+    case 'mtadd': case 'mtdef': case 'mtaddname': { const vv = S.vendors[d.v]; if (!vv) break; vv.tools = vv.tools || [];
+      if (act === 'mtadd') vv.tools.push({ id: uid(), name: '', model: '', items: '', qty: 1, calCycle: 1, status: 'ok' });
+      else if (act === 'mtaddname') vv.tools.push({ id: uid(), name: d.name, model: '', items: TOOL_ITEMS[d.name] || '', qty: 1, calCycle: 1, status: 'ok' });
+      else { const add = DEF_TOOLS.filter(n => !vv.tools.some(t => t.name === n)); vv.tools = vv.tools.concat(add.map(n => ({ id: uid(), name: n, model: '', items: TOOL_ITEMS[n] || '', qty: 1, calCycle: 1, status: 'ok' }))); toast(add.length ? `기본 계측기 ${add.length}종을 추가했습니다` : '기본 계측기가 이미 모두 있습니다'); }
+      put('vendors', d.v, vv); break; }
+    case 'mtdel': { const vv = S.vendors[d.v]; const t = vv && (vv.tools || [])[+d.i]; if (!t) break; arm('mt' + t.id, () => { vv.tools.splice(+d.i, 1); if (t.id) setPhoto(`tool__vendors__${d.v}__${t.id}`, null); put('vendors', d.v, vv); toast('계측기를 삭제했습니다'); }); break; }
     case 'vtooladd': case 'vtooldef': case 'vtooldel': { const vid = UI.vendorSel && S.vendors[UI.vendorSel] ? UI.vendorSel : vendors()[0].id; const vv = S.vendors[vid]; vv.tools = vv.tools || [];
       if (act === 'vtooladd') vv.tools.push({ id: uid(), name:'', model:'', items:'' }); else if (act === 'vtooldef') vv.tools = vv.tools.concat(DEF_TOOLS.filter(n => !vv.tools.some(t => t.name === n)).map(n => ({ id: uid(), name:n, model:'', items:'' }))); else { const gone = vv.tools.splice(+d.i, 1)[0]; if (gone && gone.id) setPhoto(`tool__vendors__${vid}__${gone.id}`, null); }
       put('vendors', vid, vv); break; }
@@ -3605,6 +3858,8 @@ document.addEventListener('change', async ev => {
     case 'rpick': UI.reportId = t.value; render(); break;
     case 'costowner': UI.costOwner = t.value || '__none'; UI.cost = null; render(); break;
     case 'costvat': if (UI.cost){ UI.cost.unitVat = t.value; render(); } break;
+    case 'mtvendor': UI.mtV = t.value; render(); break;
+    case 'mtowner': UI.mtO = t.value; render(); break;
     case 'plan': { const sh = I.sheets[d.eq]; sh.plan = sh.plan || ['','','','','']; sh.plan[+d.n] = t.value; put('inspections', UI.id, I, 600); break; }
     case 'asset': if (t.tagName === 'SELECT'){ const id = UI.ownerSel && S.owners[UI.ownerSel] ? UI.ownerSel : owners()[0].id; S.owners[id].assets[+d.i].eq = +t.value; put('owners', id, S.owners[id]); } break;
     case 'tech': if (t.tagName === 'SELECT'){ const vid = UI.vendorSel && S.vendors[UI.vendorSel] ? UI.vendorSel : vendors()[0].id; const tc = S.vendors[vid].techs.find(x => x.id === d.t); tc[d.f] = t.value; put('vendors', vid, S.vendors[vid]); } break;
@@ -3618,6 +3873,8 @@ document.addEventListener('input', ev => {
   switch (act){
     case 'note': { const sh = I.sheets[d.eq]; if (t.value) sh.note[d.k] = t.value; else delete sh.note[d.k]; touch('inspections', UI.id); break; }
     case 'shf': I.sheets[d.eq][d.f] = t.value; touch('inspections', UI.id); break;
+    case 'mtf': { const vv = S.vendors[d.v], tl = vv && (vv.tools || [])[+d.i]; if (!tl) break; tl[d.f] = t.value; touch('vendors', d.v, 600); if (['calDate', 'calCycle', 'status'].includes(d.f)){ clearTimeout(UI.mtT); UI.mtT = setTimeout(render, 500); } break; }
+    case 'qtf': { const C = UI.cost; if (!C || !C.q) break; C.q[d.f] = t.value; if (d.f === 'title') C.q.titleTouched = true; const pv = document.getElementById('qtprev'); if (pv) pv.innerHTML = qtPages(C, costCompute(C), C.q, S.owners[C.oid] || {}); break; }
     case 'refq': UI.refQ = t.value; clearTimeout(UI.refT); UI.refT = setTimeout(render, 250); break;
     case 'ctr': { const r = ctrSet(d.f, t.type === 'checkbox' ? t.checked : t.value); if (r === true) render(); else if (r){ const pv = document.getElementById('ctrprev'); if (pv) pv.innerHTML = ctrPages(UI.ctr); } break; }
     case 'ctrartf': { const A = clone(ctrArts()); A[+d.i][d.f] = t.value; S.templates.contract_tpl2 = { arts: A }; touch('templates', 'contract_tpl2', 800); const pv = document.getElementById('ctrprev'); if (pv && UI.ctr) pv.innerHTML = ctrPages({ ...UI.ctr, arts: null }); break; }
@@ -3629,7 +3886,7 @@ document.addEventListener('input', ev => {
     case 'asset': if (t.tagName === 'INPUT'){ const id = UI.ownerSel && S.owners[UI.ownerSel] ? UI.ownerSel : owners()[0].id; S.owners[id].assets[+d.i][d.f] = t.value; touch('owners', id); } break;
     case 'tech': if (t.tagName === 'INPUT'){ const vid = UI.vendorSel && S.vendors[UI.vendorSel] ? UI.vendorSel : vendors()[0].id; const tc = S.vendors[vid].techs.find(x => x.id === d.t); tc[d.f] = t.value; touch('vendors', vid); } break;
     case 'tpledit': { const k = tplKey(d.type, +d.eq); const items = tplItems(d.type, +d.eq); if (d.type === 'maint'){ const [s, n] = d.path.split('-'); items[s][+n] = t.value; } else items[+d.path] = t.value; S.templates[k] = { items }; touch('templates', k, 800); break; }
-    case 'cost': { const C = UI.cost, f = d.f; if (f.startsWith('q:')) { C.qty[f.slice(2)].q = t.value; C.split = null; } else if (f.startsWith('price:')) C.price[f.slice(6)] = t.value; else if (f.startsWith('split:')){ const g = gradeByArea(C.area); if (!C.split){ const cur = {}; document.querySelectorAll('[data-f^="split:"]').forEach(el => cur[el.dataset.f.slice(6)] = el.value); C.split = cur; } C.split[f.slice(6)] = t.value; } else { C[f] = t.value; if (f === 'area' || f === 'times') C.split = null; }
+    case 'cost': { const C = UI.cost, f = d.f; if (f.startsWith('q:')) { C.qty[f.slice(2)].q = t.value; C.split = null; } else if (f.startsWith('price:')) C.price[f.slice(6)] = t.value; else if (f.startsWith('split:')){ const g = gradeByArea(C.area); if (!C.split){ const cur = {}; document.querySelectorAll('[data-f^="split:"]').forEach(el => cur[el.dataset.f.slice(6)] = el.value); C.split = cur; } C.split[f.slice(6)] = t.value; } else { C[f] = t.value; if (f === 'area' || f === 'mt' || f === 'pt') C.split = null; }
       clearTimeout(UI.ct); UI.ct = setTimeout(render, 450); break; }
     case 'contact': { const id = UI.ownerSel && S.owners[UI.ownerSel] ? UI.ownerSel : owners()[0].id; S.owners[id].contacts[+d.i][+d.f] = t.value; touch('owners', id); break; }
     case 'vtool': { const vid = UI.vendorSel && S.vendors[UI.vendorSel] ? UI.vendorSel : vendors()[0].id; S.vendors[vid].tools[+d.i][d.f] = t.value; touch('vendors', vid); break; }
@@ -3709,6 +3966,6 @@ document.addEventListener('drop', e => { const md = e.target.closest('.media'); 
 
 
 (() => { let tip = null; document.addEventListener('mousemove', ev => { const t = ev.target.closest && ev.target.closest('[data-tip]'); if (!t){ if (tip) tip.hidden = true; return; } if (!tip){ tip = document.createElement('div'); tip.className = 'dtip'; document.body.appendChild(tip); } tip.textContent = t.getAttribute('data-tip'); tip.hidden = false; const x = Math.min(ev.clientX + 12, innerWidth - tip.offsetWidth - 8); tip.style.left = x + 'px'; tip.style.top = (ev.clientY - 34) + 'px'; }); })();
-document.head.insertAdjacentHTML('beforeend', '<style>' + RCSS + APT_CSS + CTR_CSS + REF_CSS + PC_CSS + LAW_CSS + EXP_CSS + SCH_CSS + '.lawwrap{display:grid;grid-template-columns:240px minmax(0,1fr);gap:18px;align-items:start}.lawtoc{position:sticky;top:12px;max-height:calc(100vh - 40px);overflow:auto;border:1px solid var(--line);border-radius:6px;padding:8px 4px;background:var(--surface)}.lawtoc a{display:block;padding:4px 8px;border-radius:4px;font-size:12.5px;color:var(--ink);cursor:pointer;line-height:1.4}.lawtoc a.l1{font-weight:700;margin-top:6px}.lawtoc a.l2{padding-left:16px;color:var(--muted)}.lawtoc a:hover{background:var(--sunk)}.lawtoc a.on{background:var(--sky-soft);color:var(--sky-ink)}@media (max-width:900px){.lawwrap{grid-template-columns:minmax(0,1fr)}.lawtoc{position:static;max-height:220px}}.lawtabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}.lawtabs button{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:6px 12px;cursor:pointer;font-size:13px}.lawtabs button.on{background:var(--navy);border-color:var(--navy);color:#fff;font-weight:600}</style>');
+document.head.insertAdjacentHTML('beforeend', '<style>' + RCSS + APT_CSS + CTR_CSS + QT_CSS + REF_CSS + PC_CSS + LAW_CSS + EXP_CSS + SCH_CSS + '.lawwrap{display:grid;grid-template-columns:240px minmax(0,1fr);gap:18px;align-items:start}.lawtoc{position:sticky;top:12px;max-height:calc(100vh - 40px);overflow:auto;border:1px solid var(--line);border-radius:6px;padding:8px 4px;background:var(--surface)}.lawtoc a{display:block;padding:4px 8px;border-radius:4px;font-size:12.5px;color:var(--ink);cursor:pointer;line-height:1.4}.lawtoc a.l1{font-weight:700;margin-top:6px}.lawtoc a.l2{padding-left:16px;color:var(--muted)}.lawtoc a:hover{background:var(--sunk)}.lawtoc a.on{background:var(--sky-soft);color:var(--sky-ink)}@media (max-width:900px){.lawwrap{grid-template-columns:minmax(0,1fr)}.lawtoc{position:static;max-height:220px}}.lawtabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}.lawtabs button{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:6px 12px;cursor:pointer;font-size:13px}.lawtabs button.on{background:var(--navy);border-color:var(--navy);color:#fff;font-weight:600}</style>');
 boot();
 </script>
